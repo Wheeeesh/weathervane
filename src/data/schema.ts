@@ -93,7 +93,7 @@ export const FamilyView = z.object({
 })
 
 export const Forecast = z.object({
-  curve: z.array(Point).length(25),
+  curve: z.array(Point).length(49),
   centre: z.number(),
   amplitude: z.number(),
   peak: z.object({ m: z.number(), p: z.number() }),

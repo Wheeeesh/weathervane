@@ -32,7 +32,7 @@ export function useViewParams() {
     }
     const sort = sp.get('sort') as SortKey
     return {
-      m: num('m', DEFAULT_M, 0, 24),
+      m: num('m', DEFAULT_M, 0, 48),
       cat: list('cat'), seg: list('seg'), tier: list('tier'), region: list('region'), stage: list('stage'),
       minp: num('minp', 0, 0, 100),
       minc: num('minc', 0, 0, 10),
@@ -90,6 +90,6 @@ export function applyFilters(trends: EditionTrend[], p: ViewParams) {
 }
 
 export function nearestHorizon(m: number) {
-  const hs = [0, 1, 3, 6, 12, 24]
+  const hs = [0, 1, 3, 6, 12, 24, 36, 48]
   return hs.reduce((best, h) => (Math.abs(h - m) < Math.abs(best - m) ? h : best), 0)
 }

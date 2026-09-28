@@ -1,14 +1,15 @@
 import { Link, useParams } from 'react-router-dom'
 import { ConsensusMeter } from '../components/ConsensusMeter'
+import { PRESETS } from '../components/HorizonSlider'
 import { Loading } from '../components/Loading'
 import { ProbabilityCurve } from '../components/ProbabilityCurve'
 import { useEdition, useHistory } from '../lib/data'
 import {
   CATEGORY_LABEL, MARKET_LABEL, REGION_LABEL, SEGMENT_LABEL, STAGE_LABEL, STANCE_LABEL, TIER_LABEL,
-  horizonDate, horizonName, longDate, monthLabel, pct, season, signedPts, verdict,
+  horizonDate, horizonName, horizonShort, longDate, monthLong, pct, range, season, signedPts, verdict,
 } from '../lib/format'
 import { nearestHorizon, useViewParams } from '../lib/params'
-import { HORIZONS } from '../lib/scoring'
+import { LONG_RANGE } from '../lib/scoring'
 
 export default function TrendDetail() {
   const { id } = useParams()
@@ -20,9 +21,9 @@ export default function TrendDetail() {
   const trend = edition.trends.find((t) => t.id === id)
   if (!trend) {
     return (
-      <div className="wrap py-20">
-        <div className="display" style={{ fontSize: 36 }}>This trend isn't in this edition.</div>
-        <Link to={`/?${search}`} className="btn mt-5 inline-block no-underline">Back to the forecast</Link>
+      <div className="wrap py-24 text-center">
+        <div className="t-headline">This trend isn’t in this edition.</div>
+        <Link to={`/?${search}`} className="btn link mt-3 inline-block">Back to Forecast</Link>
       </div>
     )
   }
@@ -36,142 +37,134 @@ export default function TrendDetail() {
   const peakAt = horizonDate(edition.date, f.peak.m)
 
   return (
-    <article className="fade-in">
-      <div style={{ height: 10, background: trend.swatch }} />
-      <div className="wrap pt-6">
-        <Link to={`/?${search}`} className="mono text-xs muted no-underline hover:underline">← All trends</Link>
+    <article className="wrap pt-8 fade-in">
+      <Link to={`/?${search}`} className="t-caption accent">‹ Forecast</Link>
 
-        <header className="grid gap-6 md:grid-cols-[1fr_auto] mt-4 items-end">
-          <div>
-            <div className="flex gap-2 items-center flex-wrap mb-3">
-              <span className="tag">{CATEGORY_LABEL[trend.category]}</span>
-              <span className="tag">·</span>
-              <span className="tag">{SEGMENT_LABEL[trend.segment]}</span>
-              <span className={`stage stage-${trend.stage} ml-1`}>{STAGE_LABEL[trend.stage]}</span>
-            </div>
-            <h1 className="display" style={{ fontSize: 'clamp(44px, 8vw, 88px)' }}>{trend.name}</h1>
-            <p className="mt-3 text-lg max-w-2xl" style={{ color: 'var(--ink-2)' }}>{trend.definition}</p>
-          </div>
-          <div className="md:text-right">
-            <div className="eyebrow">{horizonName(params.m)} · {monthLabel(at)} {season(at)}</div>
-            <div className="display" style={{ fontSize: 'clamp(72px, 12vw, 120px)', lineHeight: 0.85 }}>
-              {Math.round(pt.p * 100)}<span style={{ fontSize: '0.4em' }}>%</span>
-            </div>
-            <div className="mono text-xs mt-2">
-              {verdict(pt.p)} to be mainstream · range {pct(pt.lo)}–{pct(pt.hi)}
-              {d !== undefined && <span className={d > 0.005 ? 'delta-up' : d < -0.005 ? 'delta-down' : 'muted'}> · {signedPts(d)} pts vs last week</span>}
-            </div>
-          </div>
-        </header>
+      <header className="mt-5">
+        <div className="flex items-center gap-2 flex-wrap t-caption">
+          <span className="dot" style={{ background: trend.swatch }} />
+          <span>{CATEGORY_LABEL[trend.category]} · {SEGMENT_LABEL[trend.segment]}</span>
+          <span className={`stage stage-${trend.stage}`}>{STAGE_LABEL[trend.stage]}</span>
+        </div>
+        <h1 className="t-hero mt-2">{trend.name}</h1>
+        <p className="t-sub mt-2 max-w-2xl" style={{ fontSize: 19 }}>{trend.definition}</p>
+      </header>
 
-        <section className="rule-strong mt-8 pt-4">
-          <div className="flex flex-wrap items-center justify-between gap-3 mb-2">
-            <div className="chip-row">
-              {HORIZONS.map((h) => (
-                <button key={h} className={`chip ${params.m === h ? 'on' : ''}`} onClick={() => set({ m: h })}>{h === 0 ? 'Now' : `${h}M`}</button>
-              ))}
-            </div>
-            <div className="text-xs muted">
-              Most likely peak: <strong style={{ color: 'var(--ink)' }}>{f.peak.m === 0 ? 'now' : `${monthLabel(peakAt)} (${season(peakAt)})`}</strong> at {pct(f.peak.p)}
-            </div>
+      <div className="grid gap-4 mt-8 md:grid-cols-[280px_1fr]">
+        <section className="card p-6 flex flex-col">
+          <div className="t-caption">{monthLong(at)} · {season(at)}</div>
+          <div className="num-xl mt-2" style={{ fontSize: 72 }}>{Math.round(pt.p * 100)}<small>%</small></div>
+          <div className="t-body font-medium mt-2">{verdict(pt.p)} to be mainstream</div>
+          <div className="t-caption mt-0.5">Range {range(pt.lo, pt.hi)} · {horizonName(params.m)}</div>
+          {d !== undefined && <div className={`t-caption mt-0.5 num ${d > 0.005 ? 'up' : d < -0.005 ? 'down' : ''}`}>{signedPts(d)} pts since last week</div>}
+          {params.m > LONG_RANGE && <div className="mt-3"><span className="badge-long">Long range · low confidence</span></div>}
+          <div className="mt-auto pt-5 t-caption">
+            Most likely peak: <span style={{ color: 'var(--text)' }}>{f.peak.m === 0 ? 'now' : `${monthLong(peakAt)} (${season(peakAt)})`}</span> at {pct(f.peak.p)}
           </div>
-          <ProbabilityCurve forecast={f} m={params.m} onChange={(m) => set({ m })} editionDate={edition.date} color={trend.swatch} />
-          <p className="text-xs muted mt-1">Drag across the chart to move through time. Shaded band = the plausible range given how much the sources agree.</p>
         </section>
 
-        <div className="grid gap-10 md:grid-cols-[1.4fr_1fr] mt-10">
+        <section className="card p-5 min-w-0">
+          <div className="seg mb-4">
+            {PRESETS.map((h) => (
+              <button key={h} className={params.m === h ? 'on' : ''} onClick={() => set({ m: h })}>{horizonShort(h)}</button>
+            ))}
+          </div>
+          <ProbabilityCurve forecast={f} m={params.m} onChange={(m) => set({ m })} editionDate={edition.date} />
+          <p className="t-footnote mt-2">Tap or drag the chart to move through time. The shaded band is the plausible range given how much the sources agree.</p>
+        </section>
+      </div>
+
+      <div className="grid gap-8 mt-10 md:grid-cols-[1.35fr_1fr]">
+        <div className="space-y-8">
           <section>
-            <div className="eyebrow mb-3">Why</div>
-            <p className="lede">{trend.reasoning}</p>
-            <div className="mt-6 p-4" style={{ borderLeft: '3px solid var(--accent)', background: 'var(--card)' }}>
-              <div className="eyebrow mb-1">What would change our mind</div>
-              <p>{trend.wouldChange}</p>
+            <div className="t-section">Why</div>
+            <div className="card p-6">
+              <p className="t-body" style={{ fontSize: 19, lineHeight: 1.45 }}>{trend.reasoning}</p>
+            </div>
+          </section>
+          <section>
+            <div className="t-section">What would change our mind</div>
+            <div className="card p-6"><p>{trend.wouldChange}</p></div>
+          </section>
+        </div>
+
+        <aside className="space-y-8">
+          <section>
+            <div className="t-section">Consensus</div>
+            <div className="group">
+              <div className="row"><ConsensusMeter consensus={f.consensus} /></div>
+              {f.consensus.families.map((fam) => (
+                <div key={fam.family} className="row">
+                  <div className="flex-1 min-w-0">
+                    <div className="truncate">{fam.sources.map((s) => src.get(s)?.name ?? s).join(', ')}</div>
+                    <div className="t-footnote">{TIER_LABEL[src.get(fam.sources[0])?.tier ?? 'editorial']} · weight {fam.weight.toFixed(2)}</div>
+                  </div>
+                  <div className="text-right t-caption">
+                    <div style={{ color: 'var(--text)' }}>{STANCE_LABEL[fam.stance]}</div>
+                    <div>{fam.agrees ? `Peak ${season(horizonDate(edition.date, Math.round(fam.centre)))}` : <span className="down">Disagrees</span>}</div>
+                  </div>
+                </div>
+              ))}
             </div>
           </section>
 
-          <aside className="space-y-6">
-            <div>
-              <div className="eyebrow mb-3">Consensus</div>
-              <ConsensusMeter consensus={f.consensus} />
-              <table className="table mt-3 text-sm">
-                <thead><tr><th>Source family</th><th>Says</th><th>Peak</th></tr></thead>
-                <tbody>
-                  {f.consensus.families.map((fam) => {
-                    const names = fam.sources.map((s) => src.get(s)?.name ?? s).join(', ')
-                    return (
-                      <tr key={fam.family}>
-                        <td>
-                          <div>{names}</div>
-                          <div className="tag mt-0.5">{TIER_LABEL[src.get(fam.sources[0])?.tier ?? 'editorial']} · weight {fam.weight.toFixed(2)}</div>
-                        </td>
-                        <td>{STANCE_LABEL[fam.stance]}</td>
-                        <td className="mono text-xs whitespace-nowrap">
-                          {season(horizonDate(edition.date, Math.round(fam.centre)))}
-                          {!fam.agrees && <div style={{ color: 'var(--accent)' }}>disagrees</div>}
-                        </td>
-                      </tr>
-                    )
-                  })}
-                </tbody>
-              </table>
+          <section>
+            <div className="t-section">How it resolves</div>
+            <div className="group p-4 t-caption" style={{ lineHeight: 1.5 }}>
+              Counted as mainstream when it’s in the new-in of at least three of Zara, H&M, Mango, COS and Uniqlo, and search interest for{' '}
+              <a className="accent" href={`https://trends.google.com/trends/explore?date=today%205-y&q=${encodeURIComponent(trend.searchTerm)}`} target="_blank" rel="noreferrer">“{trend.searchTerm}”</a>{' '}
+              is at or above its two-year average.
             </div>
-            <div>
-              <div className="eyebrow mb-2">How it resolves</div>
-              <p className="text-sm" style={{ color: 'var(--ink-2)' }}>
-                Counted as mainstream when it's stocked in the new-in of at least three of Zara, H&M, Mango, COS and Uniqlo <em>and</em> search interest for
-                “<a href={`https://trends.google.com/trends/explore?date=today%205-y&q=${encodeURIComponent(trend.searchTerm)}`} target="_blank" rel="noreferrer">{trend.searchTerm}</a>” sits at or above its two-year average.
-              </p>
-            </div>
-            <div>
-              <div className="eyebrow mb-2">Week by week · 6-month outlook</div>
+          </section>
+
+          <section>
+            <div className="t-section">6-month outlook, week by week</div>
+            <div className="group p-4">
               {past.length > 1 ? (
                 <div className="flex items-end gap-1 h-12">
                   {past.map((h) => (
-                    <div key={h.edition} title={`${h.edition}: ${pct(h.p[3])}`} style={{ flex: 1, height: `${Math.max(4, h.p[3] * 100)}%`, background: h.edition === edition.id ? 'var(--accent)' : 'var(--ink)' }} />
+                    <div key={h.edition} title={`${h.edition}: ${pct(h.p[3])}`} style={{ flex: 1, borderRadius: 3, height: `${Math.max(6, h.p[3] * 100)}%`, background: h.edition === edition.id ? 'var(--accent)' : 'var(--fill)' }} />
                   ))}
                 </div>
               ) : (
-                <p className="text-sm muted">First edition — the weekly history starts here.</p>
+                <p className="t-caption">First edition. The weekly history starts here.</p>
               )}
             </div>
-          </aside>
-        </div>
-
-        <section className="mt-12">
-          <div className="flex items-baseline justify-between rule-strong pt-4 mb-2">
-            <div className="eyebrow">Evidence · {trend.signals.length} signal{trend.signals.length === 1 ? '' : 's'}</div>
-            <div className="text-xs muted hidden sm:block">Weight = source weight × strength × freshness</div>
-          </div>
-          <ol>
-            {trend.signals.map((s) => {
-              const source = src.get(s.sourceId)
-              return (
-                <li key={s.id} className="grid gap-1 sm:grid-cols-[180px_1fr_auto] sm:gap-6 py-4 rule">
-                  <div>
-                    <div className="font-medium">{source?.name}</div>
-                    <div className="tag mt-0.5">{source ? TIER_LABEL[source.tier] : ''}</div>
-                  </div>
-                  <div>
-                    <p>{s.summary}</p>
-                    <a href={s.url} target="_blank" rel="noreferrer" className="mono text-xs muted break-all">
-                      {new URL(s.url).hostname.replace('www.', '')}{s.via ? ` · via ${s.via}` : ''} ↗
-                    </a>
-                  </div>
-                  <div className="mono text-xs sm:text-right whitespace-nowrap">
-                    <div className={s.stance === 'declining' ? 'delta-down' : 'delta-up'}>{STANCE_LABEL[s.stance]}{s.target ? ` → ${season(s.target + '-15')}` : ''}</div>
-                    <div className="muted">{s.dateApprox ? '~' : ''}{longDate(s.date)}</div>
-                    <div className="muted">w {s.weight.toFixed(2)}</div>
-                  </div>
-                </li>
-              )
-            })}
-          </ol>
-        </section>
-
-        <p className="text-xs muted mt-6">
-          Markets: {trend.markets.map((m) => MARKET_LABEL[m]).join(', ')} · Regions: {trend.regions.map((r) => REGION_LABEL[r]).join(', ')} · Tracked since {trend.addedIn}
-        </p>
+          </section>
+        </aside>
       </div>
+
+      <section className="mt-10">
+        <div className="flex items-baseline justify-between">
+          <div className="t-section">Evidence · {trend.signals.length} signal{trend.signals.length === 1 ? '' : 's'}</div>
+          <div className="t-footnote mr-4 hidden sm:block">Weight = source × strength × freshness</div>
+        </div>
+        <div className="group">
+          {trend.signals.map((s) => {
+            const source = src.get(s.sourceId)
+            return (
+              <a key={s.id} href={s.url} target="_blank" rel="noreferrer" className="row" style={{ alignItems: 'flex-start', paddingTop: 14, paddingBottom: 14 }}>
+                <div className="flex-1 min-w-0">
+                  <div className="flex items-baseline gap-2 flex-wrap">
+                    <span className="font-semibold" style={{ fontSize: 15 }}>{source?.name}</span>
+                    <span className="t-footnote">{source ? TIER_LABEL[source.tier] : ''}{s.via ? ` · via ${s.via}` : ''}</span>
+                  </div>
+                  <p className="mt-1" style={{ fontSize: 15 }}>{s.summary}</p>
+                  <div className="t-footnote mt-1 num">
+                    <span className={s.stance === 'declining' ? 'down' : 'accent'}>{STANCE_LABEL[s.stance]}{s.target ? ` → ${season(s.target + '-15')}` : ''}</span>
+                    {' · '}{s.dateApprox ? '~' : ''}{longDate(s.date)} · weight {s.weight.toFixed(2)} · {new URL(s.url).hostname.replace('www.', '')}
+                  </div>
+                </div>
+                <span className="chev mt-2" />
+              </a>
+            )
+          })}
+        </div>
+      </section>
+
+      <p className="t-footnote mt-6">
+        Markets: {trend.markets.map((m) => MARKET_LABEL[m]).join(', ')} · Regions: {trend.regions.map((r) => REGION_LABEL[r]).join(', ')} · Tracked since {trend.addedIn}
+      </p>
     </article>
   )
 }

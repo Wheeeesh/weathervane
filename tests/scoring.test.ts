@@ -63,6 +63,14 @@ describe('forecastTrend', () => {
     expect(split.consensus.agreeing).toBeLessThan(split.consensus.total)
   })
 
+  it('regresses far horizons toward the base rate', () => {
+    const f = forecastTrend('peak', [sig('a', 'peaking', 0, 0.9), sig('b', 'peaking', 0, 0.9), sig('c', 'peaking', 0, 0.9)])
+    expect(f.curve[0].p).toBeGreaterThan(0.8)
+    expect(f.curve[48].p).toBeGreaterThan(0.1)
+    expect(f.curve[48].p).toBeLessThan(0.25)
+    expect(f.curve[48].hi - f.curve[48].lo).toBeGreaterThan(f.curve[0].hi - f.curve[0].lo)
+  })
+
   it('moves the peak toward where the sources say it lands', () => {
     const early = forecastTrend('early', [sig('a', 'rising', 2, 0.9), sig('b', 'rising', 2, 0.9)])
     const late = forecastTrend('early', [sig('a', 'rising', 14, 0.9), sig('b', 'rising', 14, 0.9)])
@@ -73,7 +81,7 @@ describe('forecastTrend', () => {
 describe('resolution', () => {
   const ed = {
     id: '2026-W40', date: '2026-09-28',
-    trends: [{ id: 'x', forecast: { curve: Array.from({ length: 25 }, (_, m) => ({ m, p: 0.7, lo: 0.6, hi: 0.8 })) } }],
+    trends: [{ id: 'x', forecast: { curve: Array.from({ length: 49 }, (_, m) => ({ m, p: 0.7, lo: 0.6, hi: 0.8 })) } }],
   } as never
   it('resolves a prediction against the observation nearest its due date', () => {
     const { outcomes } = resolveOutcomes([ed], [

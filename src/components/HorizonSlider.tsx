@@ -1,5 +1,9 @@
-import { HORIZONS, MONTHS } from '../lib/scoring'
-import { horizonDate, horizonName, monthLabel, season } from '../lib/format'
+import { LONG_RANGE, MONTHS } from '../lib/scoring'
+import { horizonDate, horizonName, horizonShort, monthLong, season } from '../lib/format'
+
+export const PRESETS = [0, 6, 12, 24, 36, 48]
+/** Half the slider thumb: the track's usable span is inset by this on both sides. */
+export const THUMB_INSET = 14
 
 interface Props {
   m: number
@@ -8,54 +12,55 @@ interface Props {
   compact?: boolean
 }
 
-/** Month-by-month horizon, Now → 24 months, with retail seasons underneath. */
+/** Segmented presets for the big jumps, a slider for single months. */
 export function HorizonSlider({ m, onChange, editionDate, compact }: Props) {
   const at = horizonDate(editionDate, m)
-  const seasons: { label: string; from: number }[] = []
-  for (let i = 0; i <= MONTHS; i++) {
-    const label = season(horizonDate(editionDate, i))
-    if (!seasons.length || seasons[seasons.length - 1].label !== label) seasons.push({ label, from: i })
+  const pct = (x: number) => (x / MONTHS) * 100
+  const track = `linear-gradient(to right, var(--accent) 0 ${pct(m)}%, var(--fill) ${pct(m)}% ${pct(LONG_RANGE)}%, color-mix(in srgb, var(--orange) 22%, transparent) ${pct(LONG_RANGE)}% 100%)`
+
+  // January of each year, for a quiet year axis under the slider.
+  const years: { label: string; at: number }[] = []
+  for (let i = 1; i <= MONTHS; i++) {
+    const d = horizonDate(editionDate, i)
+    if (d.slice(5, 7) === '01') years.push({ label: d.slice(0, 4), at: i })
   }
 
   return (
-    <div className="horizon">
+    <div>
       {!compact && (
-        <div className="flex items-end justify-between gap-4 pb-2">
-          <div>
-            <div className="eyebrow">The forecast for</div>
-            <div className="display" style={{ fontSize: 'clamp(34px, 6vw, 56px)' }}>
-              {monthLabel(at)} <em className="muted" style={{ fontSize: '0.6em' }}>{season(at)}</em>
-            </div>
+        <div className="mb-5">
+          <div className="t-hero">{monthLong(at)}</div>
+          <div className="flex items-center gap-2 flex-wrap mt-1.5">
+            <span className="t-sub">{season(at)} · {horizonName(m)}</span>
+            {m > LONG_RANGE && <span className="badge-long">Long range · low confidence</span>}
           </div>
-          <div className="mono muted text-right text-xs pb-1">{horizonName(m)}</div>
         </div>
       )}
-      <input
-        type="range"
-        min={0}
-        max={MONTHS}
-        step={1}
-        value={m}
-        onChange={(e) => onChange(Number(e.target.value))}
-        aria-label="Forecast horizon in months"
-        aria-valuetext={`${horizonName(m)}, ${monthLabel(at)}`}
-      />
-      <div className="ticks" aria-hidden>
-        {HORIZONS.map((h) => (
-          <button key={h} className={`tick ${h === m ? 'on' : ''} ${h === 1 ? 'tick-minor' : ''}`} style={{ left: `${(h / MONTHS) * 100}%` }} onClick={() => onChange(h)} tabIndex={-1}>
-            <span>{h === 0 ? 'Now' : `${h}M`}</span>
+      <div className="seg" role="tablist" aria-label="Forecast horizon">
+        {PRESETS.map((h) => (
+          <button key={h} role="tab" aria-selected={m === h} className={m === h ? 'on' : ''} onClick={() => onChange(h)}>
+            {horizonShort(h)}
           </button>
         ))}
       </div>
-      <div className="seasons" aria-hidden>
-        {seasons.map((s, i) => {
-          const to = seasons[i + 1]?.from ?? MONTHS
-          return (
-            <span key={s.label} style={{ left: `${(s.from / MONTHS) * 100}%`, width: `${((to - s.from) / MONTHS) * 100}%` }}>
-              {to - s.from >= 2 ? s.label : ''}
-            </span>
-          )
-        })}
+      <div className="mt-3">
+        <input
+          type="range"
+          className="range"
+          min={0}
+          max={MONTHS}
+          step={1}
+          value={m}
+          onChange={(e) => onChange(Number(e.target.value))}
+          style={{ ['--track' as string]: track }}
+          aria-label="Forecast horizon in months"
+          aria-valuetext={`${horizonName(m)}, ${monthLong(at)}`}
+        />
+        <div className="years" aria-hidden>
+          {years.map((y) => (
+            <span key={y.label} style={{ left: `${pct(y.at)}%` }}>{y.label}</span>
+          ))}
+        </div>
       </div>
     </div>
   )

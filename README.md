@@ -1,7 +1,7 @@
 # Weathervane
 
 A weekly fashion forecast. For every tracked trend: the probability it's mainstream
-at any point over the next 24 months, how much the industry's sources agree, and
+at any point over the next four years, how much the industry's sources agree, and
 why — with every claim linked to its source.
 
 **How it stays honest**
@@ -52,9 +52,12 @@ Each signal is weighted by source tier (data 1.0, forecaster 0.85, retail 0.6,
 editorial 0.55), strength and freshness (six-month half-life). Signals from one
 family combine by noisy-OR, so a group can never cast more than one vote. The
 trend's peak month blends its lifecycle stage with the timing each family implies.
-The chance it reaches mainstream at all rises with independent evidence (one strong
-source ≈ 45%, three ≈ 90%, capped at 95%). The curve rises fast and fades slowly.
-When families disagree on timing, the band widens and p is pulled toward a 20% base rate.
+Lifecycle stage sets the starting odds of being mainstream at peak (a trend already
+at peak *is* mainstream); independent evidence moves them, capped at 95%. The curve
+rises fast and plateaus slowly (faster once fading). When families disagree on timing,
+the band widens and p is pulled toward the stage's base rate. Forecast skill decays
+with lead time (weight e^(−m/36)), so beyond two years every trend converges toward
+its base rate — the UI labels that zone "long range · low confidence" on purpose.
 
 ## Sources & licences
 

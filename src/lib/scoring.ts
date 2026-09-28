@@ -14,9 +14,11 @@ import type { Edition, EditionTrend, Forecast, Observation, Outcome, Signal, Sou
  *   - lead time: nobody forecasts fashion two years out, so skill decays with the horizon
  */
 
-export const METHOD = 'wv-2'
-export const HORIZONS = [0, 1, 3, 6, 12, 24] as const
-export const MONTHS = 24
+export const METHOD = 'wv-3'
+export const HORIZONS = [0, 1, 3, 6, 12, 24, 36, 48] as const
+export const MONTHS = 48
+/** Beyond this, forecasts are mostly base rate and the UI says so. */
+export const LONG_RANGE = 24
 
 export const TIER_PRIOR: Record<Tier, number> = { data: 1, forecaster: 0.85, retail: 0.6, editorial: 0.55 }
 export const STAGE_CENTRE: Record<Stage, number> = { emerging: 14, early: 8, rising: 4, peak: 0, fading: -6 }
@@ -32,7 +34,7 @@ const DECAY_FLOOR = 0.3
 const SIGMA_BEFORE = 4
 const SIGMA_AFTER = 10
 const SIGMA_FADING = 6 // a trend already in decline loses search interest faster than a plateau
-const SKILL_HORIZON = 36 // months; forecast weight = e^(−m/36): 85% at 6M, 51% at 24M
+const SKILL_HORIZON = 36 // months; forecast weight = e^(−m/36): 85% at 6M, 51% at 2Y, 26% at 4Y
 const AGREE_WINDOW = 9 // months; families whose peak timings fit in one window tell the same story
 const PEAK_PLATEAU = 3 // months a "peaking" report implies the plateau continues
 const MIN_TRACK_RECORD = 5
@@ -158,7 +160,7 @@ export function forecastTrend(stage: Stage, signals: WeightedSignal[]): Forecast
 
   const halfWidth = 0.05 + 0.2 / (1 + 2 * evidence) + 0.012 * Math.min(spread, 12)
   const curve = ps.map((p, m) => {
-    const hw = halfWidth * (1 + (0.8 * m) / MONTHS) * clamp(2 * Math.sqrt(p * (1 - p)) + 0.2, 0, 1)
+    const hw = halfWidth * (1 + m / 30) * clamp(2 * Math.sqrt(p * (1 - p)) + 0.2, 0, 1)
     return { m, p: round(p), lo: round(clamp(p - hw, 0.01, 0.99)), hi: round(clamp(p + hw, 0.01, 0.99)) }
   })
 

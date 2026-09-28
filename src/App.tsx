@@ -12,58 +12,34 @@ import Week from './routes/Week'
 const NAV = [
   { to: '/', label: 'Forecast' },
   { to: '/timeline', label: 'Timeline' },
-  { to: '/week', label: 'This week' },
+  { to: '/week', label: 'This Week' },
   { to: '/sources', label: 'Sources' },
-  { to: '/accuracy', label: 'Accuracy & method' },
+  { to: '/accuracy', label: 'Accuracy' },
 ]
 
-function Isobars() {
-  // Decorative pressure lines — the weather-map motif.
-  const lines = Array.from({ length: 9 }, (_, i) => {
-    const y = 20 + i * 22
-    return `M-20,${y} C200,${y - 40 + i * 6} 420,${y + 50 - i * 4} 700,${y + 6} S1100,${y - 36} 1300,${y + 10}`
-  })
+function Mark() {
   return (
-    <svg className="isobars" viewBox="0 0 1280 220" preserveAspectRatio="none" aria-hidden>
-      {lines.map((d, i) => (
-        <path key={i} d={d} fill="none" stroke="currentColor" strokeWidth={1} vectorEffect="non-scaling-stroke" />
-      ))}
+    <svg width="22" height="22" viewBox="0 0 32 32" aria-hidden>
+      <rect width="32" height="32" rx="8" fill="var(--accent)" />
+      <path d="M9 20l7-9 7 9" stroke="#fff" strokeWidth="2.6" fill="none" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
   )
 }
 
 export default function App() {
   const { params, search } = useViewParams()
-  const { edition, index, isLatest } = useEdition(params.e)
+  const { edition, isLatest } = useEdition(params.e)
   const location = useLocation()
   const keep = search ? `?${search}` : ''
 
   return (
     <div className="min-h-screen flex flex-col">
-      <header className="masthead">
-        <Isobars />
-        <div className="wrap relative">
-          <div className="flex items-end justify-between gap-4 pt-6 pb-3 flex-wrap">
-            <NavLink to={`/${keep}`} className="wordmark">
-              Weather<em>vane</em>
-            </NavLink>
-            <div className="sm:text-right pb-1">
-              <div className="eyebrow">The weekly fashion forecast</div>
-              <div className="mono text-xs mt-1">
-                {edition ? (
-                  <>
-                    Edition {edition.id.replace('-W', ' · Week ')} · {longDate(edition.date)}
-                    {!isLatest && index && (
-                      <span style={{ color: 'var(--accent)' }}> · archive</span>
-                    )}
-                  </>
-                ) : (
-                  ' '
-                )}
-              </div>
-            </div>
-          </div>
-          <nav className="nav -mx-3" aria-label="Sections">
+      <header className="bar">
+        <div className="wrap bar-inner">
+          <NavLink to={`/${keep}`} className="brand">
+            <Mark /> Weathervane
+          </NavLink>
+          <nav className="nav" aria-label="Sections">
             {NAV.map((n) => (
               <NavLink key={n.to} to={`${n.to}${keep}`} end={n.to === '/'} className={({ isActive }) => (isActive ? 'active' : '')}>
                 {n.label}
@@ -85,10 +61,12 @@ export default function App() {
         </Routes>
       </main>
 
-      <footer className="rule-strong mt-16">
-        <div className="wrap py-6 flex flex-wrap justify-between gap-3 text-xs muted">
-          <span>Probabilities are computed from cited signals by a fixed model, then scored against what actually happened.</span>
-          <span className="mono">Updated every Monday</span>
+      <footer className="mt-20 border-t" style={{ borderColor: 'var(--sep)' }}>
+        <div className="wrap py-6 flex flex-wrap justify-between gap-2 t-footnote">
+          <span>
+            {edition ? `Edition ${edition.id} · ${longDate(edition.date)}${isLatest ? '' : ' · archive'} · ` : ''}Updated every Monday.
+          </span>
+          <span>Probabilities come from a fixed model over cited sources, and are scored against what actually happens.</span>
         </div>
       </footer>
     </div>

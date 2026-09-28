@@ -2,6 +2,7 @@ import type { Category, Stage, Stance, Tier } from '../data/schema'
 import { addMonths } from './scoring'
 
 export const pct = (p: number) => `${Math.round(p * 100)}%`
+export const range = (lo: number, hi: number) => `${Math.round(lo * 100)}–${Math.round(hi * 100)}%`
 export const signedPts = (d: number) => {
   const v = Math.round(d * 100)
   return v === 0 ? '±0' : `${v > 0 ? '+' : '−'}${Math.abs(v)}`
@@ -16,6 +17,13 @@ export function season(iso: string) {
   return `AW${String(m === 1 ? y - 1 : y).slice(2)}`
 }
 
+const MONTHS_LONG = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+
+export function monthLong(iso: string) {
+  const [y, m] = iso.split('-').map(Number)
+  return `${MONTHS_LONG[m - 1]} ${y}`
+}
+
 export function monthLabel(iso: string) {
   const [y, m] = iso.split('-').map(Number)
   return `${MONTHS[m - 1]} ${y}`
@@ -27,9 +35,15 @@ export function horizonDate(editionDate: string, m: number) {
 
 export function horizonName(m: number) {
   if (m === 0) return 'Now'
-  if (m === 12) return 'In a year'
-  if (m === 24) return 'In two years'
+  if (m % 12 === 0) return m === 12 ? 'In 1 year' : `In ${m / 12} years`
+  if (m > 12) return `In ${Math.floor(m / 12)} yr ${m % 12} mo`
   return `In ${m} month${m === 1 ? '' : 's'}`
+}
+
+/** Compact label for segmented controls and axes. */
+export function horizonShort(m: number) {
+  if (m === 0) return 'Now'
+  return m % 12 === 0 ? `${m / 12}Y` : `${m}M`
 }
 
 export function longDate(iso: string) {
