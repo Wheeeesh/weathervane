@@ -1,16 +1,15 @@
 import { useEffect } from 'react'
-import { CATEGORIES, MARKETS, REGIONS, SEGMENTS, STAGES } from '../data/schema'
-import { CATEGORY_LABEL, MARKET_LABEL, REGION_LABEL, SEGMENT_LABEL, STAGE_LABEL } from '../lib/format'
+import { CATEGORIES, MARKETS, REGIONS, SEGMENTS } from '../data/schema'
+import { CATEGORY_LABEL, MARKET_LABEL, REGION_LABEL, SEGMENT_LABEL } from '../lib/format'
 import type { ViewParams } from '../lib/params'
 
-type ListKey = 'cat' | 'seg' | 'tier' | 'region' | 'stage'
+type ListKey = 'cat' | 'seg' | 'tier' | 'region'
 
 const GROUPS: { key: ListKey; title: string; options: readonly string[]; labels: Record<string, string> }[] = [
   { key: 'cat', title: 'Category', options: CATEGORIES, labels: CATEGORY_LABEL },
   { key: 'seg', title: 'Segment', options: SEGMENTS, labels: SEGMENT_LABEL },
   { key: 'tier', title: 'Market', options: MARKETS, labels: MARKET_LABEL },
   { key: 'region', title: 'Region', options: REGIONS, labels: REGION_LABEL },
-  { key: 'stage', title: 'Lifecycle', options: STAGES, labels: STAGE_LABEL },
 ]
 
 export function toggle(list: string[], v: string) {

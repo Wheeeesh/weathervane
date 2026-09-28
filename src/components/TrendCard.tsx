@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import type { EditionTrend } from '../data/schema'
-import { CATEGORY_LABEL, STAGE_LABEL, range, signedPts, verdict } from '../lib/format'
+import { ADOPTER_LABEL, CATEGORY_LABEL, range, signedPts, verdict } from '../lib/format'
+import { adopterAt } from '../lib/scoring'
 import { nearestHorizon } from '../lib/params'
 import { ConsensusMeter } from './ConsensusMeter'
 import { Sparkline } from './Sparkline'
@@ -9,6 +10,7 @@ export function TrendCard({ trend, m, search, index }: { trend: EditionTrend; m:
   const pt = trend.forecast.curve[m]
   const d = trend.delta?.[String(nearestHorizon(m))]
   const thin = trend.forecast.consensus.total < 2
+  const phase = adopterAt(trend.stage, trend.forecast.centre, m)
   return (
     <Link to={`/trend/${trend.id}?${search}`} className="card tile" style={{ animationDelay: `${Math.min(index, 12) * 30}ms` }}>
       <div className="flex items-center justify-between gap-3">
@@ -16,7 +18,7 @@ export function TrendCard({ trend, m, search, index }: { trend: EditionTrend; m:
           <span className="dot" style={{ background: trend.swatch }} />
           {CATEGORY_LABEL[trend.category]}
         </span>
-        <span className={`stage stage-${trend.stage}`}>{STAGE_LABEL[trend.stage]}</span>
+        <span className={`stage adopt-${phase}`} title="Who's wearing it at this date">{ADOPTER_LABEL[phase]}</span>
       </div>
 
       <div className="t-headline">{trend.name}</div>

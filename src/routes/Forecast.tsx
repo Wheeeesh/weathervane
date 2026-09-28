@@ -1,11 +1,11 @@
 import { useCallback, useMemo, useState } from 'react'
-import { CATEGORIES } from '../data/schema'
+import { ADOPTERS, CATEGORIES } from '../data/schema'
 import { FilterSheet, toggle } from '../components/FilterSheet'
 import { HorizonSlider } from '../components/HorizonSlider'
 import { Loading } from '../components/Loading'
 import { TrendCard } from '../components/TrendCard'
 import { useEdition } from '../lib/data'
-import { CATEGORY_LABEL } from '../lib/format'
+import { ADOPTER_HINT, ADOPTER_LABEL, CATEGORY_LABEL } from '../lib/format'
 import { applyFilters, useViewParams, type SortKey } from '../lib/params'
 
 const SORTS: { key: SortKey; label: string }[] = [
@@ -30,6 +30,22 @@ export default function Forecast() {
   return (
     <div className="wrap pt-14">
       <HorizonSlider m={params.m} onChange={(m) => set({ m })} editionDate={edition.date} />
+
+      <section className="mt-8" aria-label="Who's wearing it">
+        <div className="t-caption mb-2">Who’s wearing it then</div>
+        <div className="seg" role="tablist">
+          <button role="tab" aria-selected={!params.adopt} className={!params.adopt ? 'on' : ''} onClick={() => set({ adopt: null })}>Everyone</button>
+          {ADOPTERS.map((a) => (
+            <button key={a} role="tab" aria-selected={params.adopt === a} className={params.adopt === a ? 'on' : ''} onClick={() => set({ adopt: a })}>
+              {ADOPTER_LABEL[a]}
+            </button>
+          ))}
+        </div>
+        <p className="t-footnote mt-2">
+          {params.adopt ? ADOPTER_HINT[params.adopt] : 'Pick a level to see what that kind of dresser will be wearing at the chosen date.'}
+          {(params.adopt === 'innovators' || params.adopt === 'early-adopters') && ' The % is the chance it goes mainstream later; low numbers are normal this early.'}
+        </p>
+      </section>
 
       <div className="flex flex-wrap items-baseline gap-x-6 gap-y-1 mt-8 mb-5">
         <span className="t-body"><strong className="font-semibold">{likely}</strong> <span className="text-2">likely</span></span>

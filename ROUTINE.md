@@ -14,13 +14,18 @@ If `public/data/editions/$WEEK.json` already exists and was committed today, sto
 
 ## 1. Research (the bulk of the work)
 Search the past ~7 days (use WebSearch; restrict with `allowed_domains` to verify who said what).
-Cover every tier in `data/sources.json`, favouring measured data:
+Work the **source ladder**. Every week, search every band and say in your report which band had no new evidence:
 
-- **Data**: Lyst Index (quarterly), Tagwalk season data, Google Trends / Google's trend posts, ThredUp, Launchmetrics.
-- **Forecasters**: Heuritech articles, WGSN & Coloro public releases, Pinterest Predicts/Trends, Pantone, BoF–McKinsey.
-- **Retail**: Style Arcade, retailer trend edits (SSENSE, Mytheresa, Net-a-Porter, Zara/COS new-in).
-- **Editorial**: Vogue / Vogue Business, BoF, WWD, FashionUnited, Who What Wear, Fashionista, Highsnobiety, Hypebeast, Dazed.
-- Check the calendar: fashion weeks, Lyst quarter releases, earnings (LVMH/Kering/Inditex) all produce strong signals.
+| Band | Look at |
+|---|---|
+| Now–3 months | Google Trends, Lyst Index, StockX, The RealReal, ThredUp, Vestiaire, Depop, TikTok Creative Center, Pinterest Trends |
+| 3–12 months | Tagwalk, Launchmetrics MIV, Heuritech, WWD (runway and retailer round-ups), FashionUnited, Style Arcade, Fashionista, Who What Wear |
+| 1–2 years | Première Vision, Milano Unica, Pitti Filati, WGSN × Coloro colour, Pantone, Future Snoops, Pinterest Predicts |
+| 2–4 years | WGSN macro and Future Consumer, BoF × McKinsey State of Fashion, Euromonitor, Future Snoops macro |
+
+**Quality bar.** Only use sources in `data/sources.json` (grade A = measured data or published method; B = established trade or editorial authority). To add a source, give it `quality`, `basis` and `lead` (the months ahead it can see) and justify it in the commit message. Never add SEO sites, brand blogs or general lifestyle sites; `npm run validate` rejects unknown sources. vogue.com blocks this crawler, so use WWD and BoF for runway reporting.
+
+Check the calendar: fashion weeks, fabric fairs (Première Vision in February and September, Pitti Filati in January and June), Lyst quarter releases, WGSN Colour of the Year (spring), Pinterest Predicts (December), State of Fashion (November), and earnings from LVMH, Kering and Inditex.
 
 **Attribution rule.** Search summaries mix articles. Only record a claim if you've confirmed it on the publisher's own domain (a domain-restricted search or the page itself). If a number from Source A is reported by Outlet B, the signal's `sourceId` is A and `via` is B.
 

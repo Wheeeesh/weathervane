@@ -1,6 +1,7 @@
 import { useCallback, useMemo } from 'react'
 import { useSearchParams } from 'react-router-dom'
-import type { EditionTrend } from '../data/schema'
+import type { Adopter, EditionTrend } from '../data/schema'
+import { adopterAt } from './scoring'
 
 export type SortKey = 'probability' | 'movers' | 'consensus' | 'soonest'
 
@@ -10,14 +11,15 @@ export interface ViewParams {
   seg: string[]
   tier: string[]
   region: string[]
-  stage: string[]
+  adopt: Adopter | null
   minp: number
   minc: number
   sort: SortKey
   e: string | null
 }
 
-const LISTS = ['cat', 'seg', 'tier', 'region', 'stage'] as const
+const LISTS = ['cat', 'seg', 'tier', 'region'] as const
+const ADOPT_VALUES = ['innovators', 'early-adopters', 'early-majority', 'late-majority', 'laggards']
 export const DEFAULT_M = 6
 
 /** All view state lives in the URL so any view can be shared or bookmarked. */
@@ -33,7 +35,8 @@ export function useViewParams() {
     const sort = sp.get('sort') as SortKey
     return {
       m: num('m', DEFAULT_M, 0, 48),
-      cat: list('cat'), seg: list('seg'), tier: list('tier'), region: list('region'), stage: list('stage'),
+      cat: list('cat'), seg: list('seg'), tier: list('tier'), region: list('region'),
+      adopt: ADOPT_VALUES.includes(sp.get('adopt') ?? '') ? (sp.get('adopt') as Adopter) : null,
       minp: num('minp', 0, 0, 100),
       minc: num('minc', 0, 0, 10),
       sort: ['probability', 'movers', 'consensus', 'soonest'].includes(sort) ? sort : 'probability',
@@ -60,7 +63,8 @@ export function useViewParams() {
   )
 
   const activeFilters = LISTS.reduce((a, k) => a + params[k].length, 0) + (params.minp ? 1 : 0) + (params.minc ? 1 : 0)
-  const clearFilters = () => set({ cat: [], seg: [], tier: [], region: [], stage: [], minp: 0, minc: 0 })
+  // The adopter control lives on the page itself, not in the Filters sheet.
+  const clearFilters = () => set({ cat: [], seg: [], tier: [], region: [], minp: 0, minc: 0, adopt: null })
 
   return { params, set, activeFilters, clearFilters, search: sp.toString() }
 }
@@ -74,7 +78,7 @@ export function applyFilters(trends: EditionTrend[], p: ViewParams) {
       (!p.seg.length || p.seg.includes(t.segment) || t.segment === 'unisex') &&
       any(p.tier, t.markets) &&
       (!p.region.length || any(p.region, t.regions) || t.regions.includes('global')) &&
-      any(p.stage, [t.stage]) &&
+      (!p.adopt || adopterAt(t.stage, t.forecast.centre, p.m) === p.adopt) &&
       t.forecast.curve[p.m].p * 100 >= p.minp &&
       t.forecast.consensus.agreeing >= p.minc,
   )

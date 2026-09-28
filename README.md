@@ -59,6 +59,20 @@ the band widens and p is pulled toward the stage's base rate. Forecast skill dec
 with lead time (weight e^(−m/36)), so beyond two years every trend converges toward
 its base rate — the UI labels that zone "long range · low confidence" on purpose.
 
+## Sources
+
+Grade A = measured data or a published method; grade B = established trade or editorial
+authority. Nothing else is accepted (`npm run validate` enforces it). Each source has a
+`lead` range: the months ahead its evidence can see. Outside that range a signal counts
+at half weight, so TikTok can't call 2029 and WGSN macro doesn't get to call next month.
+The ladder: search, resale and shopping data for the next 3 months; runway and buyers
+for 3–12 months; fabric and yarn fairs and colour forecasters for 1–2 years; macro
+forecasters for 2–4 years.
+
+The **"Who's wearing it"** filter uses Rogers' adopter categories (Innovators, Early
+adopters, Early majority, Late majority, Laggards), derived from where the selected
+month sits on each trend's curve relative to its predicted peak.
+
 ## Sources & licences
 
 Only short factual summaries and links are stored. No images or paywalled content

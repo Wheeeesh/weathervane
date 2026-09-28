@@ -5,11 +5,11 @@ import { Loading } from '../components/Loading'
 import { ProbabilityCurve } from '../components/ProbabilityCurve'
 import { useEdition, useHistory } from '../lib/data'
 import {
-  CATEGORY_LABEL, MARKET_LABEL, REGION_LABEL, SEGMENT_LABEL, STAGE_LABEL, STANCE_LABEL, TIER_LABEL,
+  ADOPTER_HINT, ADOPTER_LABEL, CATEGORY_LABEL, MARKET_LABEL, leadLabel, REGION_LABEL, SEGMENT_LABEL, STAGE_LABEL, STANCE_LABEL, TIER_LABEL,
   horizonDate, horizonName, horizonShort, longDate, monthLong, pct, range, season, signedPts, verdict,
 } from '../lib/format'
 import { nearestHorizon, useViewParams } from '../lib/params'
-import { LONG_RANGE } from '../lib/scoring'
+import { LONG_RANGE, adopterAt, coverageAt } from '../lib/scoring'
 
 export default function TrendDetail() {
   const { id } = useParams()
@@ -35,6 +35,8 @@ export default function TrendDetail() {
   const d = trend.delta?.[String(nearestHorizon(params.m))]
   const past = history.data?.[trend.id] ?? []
   const peakAt = horizonDate(edition.date, f.peak.m)
+  const phase = adopterAt(trend.stage, f.centre, params.m)
+  const coverage = coverageAt(trend.signals, edition.sources, params.m)
 
   return (
     <article className="wrap pt-8 fade-in">
@@ -58,6 +60,18 @@ export default function TrendDetail() {
           <div className="t-caption mt-0.5">Range {range(pt.lo, pt.hi)} · {horizonName(params.m)}</div>
           {d !== undefined && <div className={`t-caption mt-0.5 num ${d > 0.005 ? 'up' : d < -0.005 ? 'down' : ''}`}>{signedPts(d)} pts since last week</div>}
           {params.m > LONG_RANGE && <div className="mt-3"><span className="badge-long">Long range · low confidence</span></div>}
+          <div className="mt-5 pt-4" style={{ borderTop: '1px solid var(--sep)' }}>
+            <div className="t-caption">Who’d be wearing it, if it lands</div>
+            <div className="mt-1"><span className={`stage adopt-${phase}`}>{ADOPTER_LABEL[phase]}</span></div>
+            <div className="t-footnote mt-1">{ADOPTER_HINT[phase]}</div>
+          </div>
+          <div className="mt-4">
+            <div className="t-caption">Evidence at this distance</div>
+            <div className={`mt-0.5 font-medium ${coverage < 2 ? 'down' : ''}`} style={{ fontSize: 15 }}>
+              {coverage === 0 ? 'No source can see this far' : `${coverage} source group${coverage === 1 ? '' : 's'}`}
+            </div>
+            {coverage < 2 && <div className="t-footnote">Treat this number as a rough prior, not a forecast.</div>}
+          </div>
           <div className="mt-auto pt-5 t-caption">
             Most likely peak: <span style={{ color: 'var(--text)' }}>{f.peak.m === 0 ? 'now' : `${monthLong(peakAt)} (${season(peakAt)})`}</span> at {pct(f.peak.p)}
           </div>
@@ -97,7 +111,7 @@ export default function TrendDetail() {
                 <div key={fam.family} className="row">
                   <div className="flex-1 min-w-0">
                     <div className="truncate">{fam.sources.map((s) => src.get(s)?.name ?? s).join(', ')}</div>
-                    <div className="t-footnote">{TIER_LABEL[src.get(fam.sources[0])?.tier ?? 'editorial']} · weight {fam.weight.toFixed(2)}</div>
+                    <div className="t-footnote">{TIER_LABEL[src.get(fam.sources[0])?.tier ?? 'editorial']} · {leadLabel(src.get(fam.sources[0])?.lead ?? [0, 12])} · weight {fam.weight.toFixed(2)}</div>
                   </div>
                   <div className="text-right t-caption">
                     <div style={{ color: 'var(--text)' }}>{STANCE_LABEL[fam.stance]}</div>
@@ -146,6 +160,7 @@ export default function TrendDetail() {
               <a key={s.id} href={s.url} target="_blank" rel="noreferrer" className="row" style={{ alignItems: 'flex-start', paddingTop: 14, paddingBottom: 14 }}>
                 <div className="flex-1 min-w-0">
                   <div className="flex items-baseline gap-2 flex-wrap">
+                    {source && <span className={`q q-${source.quality}`} title={source.quality === 'A' ? 'Grade A: measured data or published method' : 'Grade B: established trade or editorial authority'}>{source.quality}</span>}
                     <span className="font-semibold" style={{ fontSize: 15 }}>{source?.name}</span>
                     <span className="t-footnote">{source ? TIER_LABEL[source.tier] : ''}{s.via ? ` · via ${s.via}` : ''}</span>
                   </div>

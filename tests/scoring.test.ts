@@ -3,7 +3,7 @@ import { z } from 'zod'
 import { readFileSync } from 'node:fs'
 import { join } from 'node:path'
 import { Signal, Source, Trend } from '../src/data/schema'
-import { accuracy, forecastTrend, impliedCentre, isoWeekId, monthsBetween, resolveOutcomes, scoreEdition, type WeightedSignal } from '../src/lib/scoring'
+import { accuracy, adopterAt, coverageAt, forecastTrend, leadFactor, impliedCentre, isoWeekId, monthsBetween, resolveOutcomes, scoreEdition, type WeightedSignal } from '../src/lib/scoring'
 
 const sig = (family: string, stance: WeightedSignal['stance'], centre: number, weight = 0.6): WeightedSignal => ({ family, sourceId: family, stance, centre, weight })
 
@@ -78,6 +78,31 @@ describe('forecastTrend', () => {
   })
 })
 
+describe('adopters and the source ladder', () => {
+  it('maps months to Rogers adopter phases around the peak', () => {
+    expect(adopterAt('early', 8, 0)).toBe('early-adopters')
+    expect(adopterAt('emerging', 14, 0)).toBe('innovators')
+    expect(adopterAt('peak', 0, 0)).toBe('early-majority')
+    expect(adopterAt('peak', 0, 6)).toBe('late-majority')
+    expect(adopterAt('peak', 0, 24)).toBe('laggards')
+  })
+  it('never calls a fading trend early', () => {
+    expect(adopterAt('fading', 20, 0)).toBe('late-majority')
+  })
+  it('halves a source speaking beyond how far it can see', () => {
+    expect(leadFactor(2, [-12, 6])).toBe(1)
+    expect(leadFactor(30, [-12, 6])).toBe(0.5)
+    expect(leadFactor(30, [6, 36])).toBe(1)
+  })
+  it('counts only source groups that can see a given distance', () => {
+    const sources = [{ id: 'g', family: 'g', lead: [-12, 6] as [number, number] }, { id: 'w', family: 'w', lead: [6, 36] as [number, number] }]
+    const sigs = [{ sourceId: 'g' }, { sourceId: 'w' }]
+    expect(coverageAt(sigs, sources, 0)).toBe(1)
+    expect(coverageAt(sigs, sources, 24)).toBe(1)
+    expect(coverageAt(sigs, sources, 8)).toBe(2)
+  })
+})
+
 describe('resolution', () => {
   const ed = {
     id: '2026-W40', date: '2026-09-28',
@@ -116,12 +141,15 @@ describe('first edition data', () => {
   it('scores end to end with sane output', () => {
     const ed = scoreEdition({ date: '2026-09-28', trends, signals, sources, outcomes: [], editionDates: {} })
     expect(ed.id).toBe('2026-W40')
-    expect(ed.trends).toHaveLength(trends.length)
+    expect(ed.trends).toHaveLength(trends.filter((t) => t.status === 'active').length)
     const byId = Object.fromEntries(ed.trends.map((t) => [t.id, t]))
     // A fading trend should be less likely in a year than now; an early one more.
     expect(byId['quiet-luxury'].forecast.curve[12].p).toBeLessThan(byId['quiet-luxury'].forecast.curve[0].p)
     expect(byId['saturated-blue'].forecast.curve[6].p).toBeGreaterThan(byId['saturated-blue'].forecast.curve[0].p)
     // The contested trend is flagged as such.
     expect(byId['animal-print'].forecast.consensus.agreeing).toBeLessThan(byId['animal-print'].forecast.consensus.total)
+    // Every signal comes from a graded source.
+    const graded = new Set(sources.map((x) => x.id))
+    expect(signals.every((x) => graded.has(x.sourceId))).toBe(true)
   })
 })

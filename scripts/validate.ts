@@ -35,6 +35,14 @@ try {
   for (const o of observations) {
     if (o.date > now) fail(`observation ${o.trendId}@${o.date}: dated in the future`)
   }
+  // The source ladder: every time distance needs at least three grade-A sources that can see it.
+  const BANDS: [string, number, number][] = [['0–3 months', 0, 3], ['3–12 months', 3, 12], ['1–2 years', 12, 24], ['2–4 years', 24, 48]]
+  for (const [label, lo, hi] of BANDS) {
+    const n = sources.filter((s) => s.quality === 'A' && s.lead[0] <= hi && s.lead[1] >= lo).length
+    if (n < 3) fail(`source ladder: only ${n} grade-A source(s) cover ${label}`)
+  }
+  for (const s of sources) if (s.lead[0] > s.lead[1]) fail(`source ${s.id}: lead range is reversed`)
+
   for (const t of trends.filter((t) => t.status === 'active')) {
     const own = signals.filter((s) => s.trendId === t.id)
     if (!own.length) fail(`trend ${t.id}: active but has no signals`)

@@ -1,4 +1,4 @@
-import type { Edition, EditionTrend, Forecast, Observation, Outcome, Signal, Source, Stage, Stance, Tier, Trend } from '../data/schema'
+import type { Adopter, Edition, EditionTrend, Forecast, Observation, Outcome, Signal, Source, Stage, Stance, Tier, Trend } from '../data/schema'
 
 /**
  * The forecast model. Deterministic and pure: the same inputs always give the
@@ -14,7 +14,7 @@ import type { Edition, EditionTrend, Forecast, Observation, Outcome, Signal, Sou
  *   - lead time: nobody forecasts fashion two years out, so skill decays with the horizon
  */
 
-export const METHOD = 'wv-3'
+export const METHOD = 'wv-4'
 export const HORIZONS = [0, 1, 3, 6, 12, 24, 36, 48] as const
 export const MONTHS = 48
 /** Beyond this, forecasts are mostly base rate and the UI says so. */
@@ -38,6 +38,8 @@ const SKILL_HORIZON = 36 // months; forecast weight = e^(−m/36): 85% at 6M, 51
 const AGREE_WINDOW = 9 // months; families whose peak timings fit in one window tell the same story
 const PEAK_PLATEAU = 3 // months a "peaking" report implies the plateau continues
 const MIN_TRACK_RECORD = 5
+const LEAD_SLACK = 3 // months of tolerance around a source's lead range
+const OUT_OF_RANGE = 0.5 // weight kept when a source speaks beyond how far it can see
 
 const clamp = (x: number, lo: number, hi: number) => Math.min(hi, Math.max(lo, x))
 const logistic = (x: number) => 1 / (1 + Math.exp(-x))
@@ -88,6 +90,33 @@ export function impliedCentre(s: Pick<Signal, 'stance' | 'date' | 'target'>, edi
 
 export function signalWeight(s: Pick<Signal, 'strength' | 'date'>, sourceWeight: number, editionDate: string) {
   return sourceWeight * s.strength * decay(daysBetween(s.date, editionDate))
+}
+
+/** A source only fully counts for the time distance it can actually see (TikTok can't call 2029). */
+export function leadFactor(centre: number, lead: [number, number]) {
+  return centre >= lead[0] - LEAD_SLACK && centre <= lead[1] + LEAD_SLACK ? 1 : OUT_OF_RANGE
+}
+
+/**
+ * Who is wearing the trend m months out (Rogers' adopter categories), from where
+ * m sits relative to the trend's predicted peak c. A fading trend is never early.
+ */
+export function adopterAt(stage: Stage, centre: number, m: number): Adopter {
+  const x = m - centre
+  const phase: Adopter = x < -8 ? 'innovators' : x < -3 ? 'early-adopters' : x <= 3 ? 'early-majority' : x <= 12 ? 'late-majority' : 'laggards'
+  if (stage === 'fading' && (phase === 'innovators' || phase === 'early-adopters' || phase === 'early-majority')) return 'late-majority'
+  return phase
+}
+
+/** Independent source groups whose lead range covers month m: how much evidence speaks to that distance. */
+export function coverageAt(signals: { sourceId: string }[], sources: Pick<Source, 'id' | 'family' | 'lead'>[], m: number) {
+  const byId = new Map(sources.map((s) => [s.id, s]))
+  const fams = new Set<string>()
+  for (const s of signals) {
+    const src = byId.get(s.sourceId)
+    if (src && m >= src.lead[0] && m <= src.lead[1] + LEAD_SLACK) fams.add(src.family)
+  }
+  return fams.size
 }
 
 function bell(x: number, stage: Stage) {
@@ -232,7 +261,9 @@ export function scoreEdition({ date, trends, signals, sources, outcomes, edition
     const ws = own.map((s) => {
       const src = byId.get(s.sourceId)
       if (!src) throw new Error(`Unknown source ${s.sourceId} on ${s.id}`)
-      return { signal: s, w: { family: src.family, sourceId: src.id, stance: s.stance, weight: signalWeight(s, src.weight, date), centre: impliedCentre(s, date) } }
+      const centre = impliedCentre(s, date)
+      const weight = signalWeight(s, src.weight, date) * leadFactor(centre, src.lead)
+      return { signal: s, w: { family: src.family, sourceId: src.id, stance: s.stance, weight, centre } }
     })
     const forecast = forecastTrend(trend.stage, ws.map((x) => x.w))
     const prev = prevById.get(trend.id)

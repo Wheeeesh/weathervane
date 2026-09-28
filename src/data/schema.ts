@@ -10,6 +10,10 @@ export const REGIONS = ['global', 'europe', 'north-america', 'asia'] as const
 export const STAGES = ['emerging', 'early', 'rising', 'peak', 'fading'] as const
 export const STANCES = ['rising', 'peaking', 'declining'] as const
 export const TIERS = ['data', 'forecaster', 'editorial', 'retail'] as const
+export const QUALITIES = ['A', 'B'] as const
+export const BASES = ['measured', 'method', 'authority'] as const
+/** Rogers' diffusion of innovations: who is wearing a trend at a given moment. */
+export const ADOPTERS = ['innovators', 'early-adopters', 'early-majority', 'late-majority', 'laggards'] as const
 
 const isoDate = z.string().regex(/^\d{4}-\d{2}-\d{2}$/, 'YYYY-MM-DD')
 const yearMonth = z.string().regex(/^\d{4}-\d{2}$/, 'YYYY-MM')
@@ -22,6 +26,11 @@ export const Source = z.object({
   name: z.string(),
   family: z.string(),
   tier: z.enum(TIERS),
+  // Quality bar: A = measured data or a published method; B = established trade or editorial authority.
+  quality: z.enum(QUALITIES),
+  basis: z.enum(BASES),
+  // The time distance (months from today) this source's evidence can speak to.
+  lead: z.tuple([z.number().int(), z.number().int()]),
   measures: z.string(),
   url: https,
 })
@@ -161,3 +170,4 @@ export type Category = (typeof CATEGORIES)[number]
 export type Stage = (typeof STAGES)[number]
 export type Stance = (typeof STANCES)[number]
 export type Tier = (typeof TIERS)[number]
+export type Adopter = (typeof ADOPTERS)[number]

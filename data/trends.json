@@ -3,380 +3,930 @@
     "id": "open-toe-sandals",
     "name": "Open-toe sandals, everywhere",
     "definition": "Thongs, slides, T-straps, huaraches and gladiators become the default summer shoe — for men too.",
-    "category": "footwear", "segment": "unisex", "markets": ["luxury", "contemporary", "high-street"], "regions": ["global"],
-    "stage": "rising", "swatch": "#C9A27E", "searchTerm": "thong sandals",
-    "reasoning": "Two independent kinds of evidence point the same way. Lyst's Q2 shopper data already showed open-toe and vacation shoes taking four of the ten hottest-product slots with triple-digit growth, and the SS27 menswear runways (Celine, Lemaire, Egonlab, Yohji Yamamoto) made sandals the season's top story. Demand came first and the runway is confirming it, which usually means a strong, seasonal return in spring 2027.",
+    "category": "footwear",
+    "segment": "unisex",
+    "markets": [
+      "luxury",
+      "contemporary",
+      "high-street"
+    ],
+    "regions": [
+      "global"
+    ],
+    "stage": "rising",
+    "swatch": "#C9A27E",
+    "searchTerm": "thong sandals",
+    "reasoning": "Shopper data and buyers point the same way. Lyst's Q2 data had open-toe and vacation shoes in four of the ten hottest-product slots with triple-digit growth, and in Milan and Paris menswear, buyers named fisherman sandals the must-have for spring 2027. When demand comes first and buyers are already ordering, the trend usually returns strongly in spring.",
     "wouldChange": "Weak sandal demand in Lyst's Q1 2027 data, or high-street spring ranges that lead with sneakers instead.",
-    "addedIn": "2026-W40", "status": "active"
+    "addedIn": "2026-W40",
+    "status": "active"
   },
   {
     "id": "yellow",
     "name": "Yellow, lemon to acid",
     "definition": "Yellow moves from accent to whole garment: trenches, windbreakers, denim and suiting.",
-    "category": "colour", "segment": "unisex", "markets": ["luxury", "contemporary", "high-street"], "regions": ["global"],
-    "stage": "early", "swatch": "#E9C93B", "searchTerm": "yellow jacket",
-    "reasoning": "Yellow turned up across the SS27 men's shows (Prada's full yellow denim, and trenches at Saint Laurent, Dries Van Noten and Saul Nash) and then again in women's: Pantone's NYFW palette opens with a pale herbal yellow, and Bottega Veneta showed pale yellow in Milan. It's runway-led so far, with no shopper data yet.",
+    "category": "colour",
+    "segment": "unisex",
+    "markets": [
+      "luxury",
+      "contemporary",
+      "high-street"
+    ],
+    "regions": [
+      "global"
+    ],
+    "stage": "early",
+    "swatch": "#E9C93B",
+    "searchTerm": "yellow jacket",
+    "reasoning": "Pale yellow was the most-bought colour in Milan menswear according to WWD's buyers, and Pantone's NYFW SS27 report opens with a pale herbal yellow. Buyers and a colour forecaster agree, but there's no shopper data yet.",
     "wouldChange": "Yellow missing from the high-street spring drops in January–February 2027.",
-    "addedIn": "2026-W40", "status": "active"
+    "addedIn": "2026-W40",
+    "status": "active"
   },
   {
     "id": "full-skirts",
     "name": "The skirt comeback",
     "definition": "Full, pleated and bubble skirts, mostly midi, become the centre of the outfit.",
-    "category": "silhouette", "segment": "womens", "markets": ["luxury", "contemporary", "high-street"], "regions": ["global"],
-    "stage": "early", "swatch": "#8C6F9E", "searchTerm": "midi skirt",
-    "reasoning": "Prada built SS27 almost entirely around skirts (pleated, crinoline-lined, bubble), and Fashionista called a bra plus a skirt 'the official uniform of spring 2027'. When Prada commits this fully, the high street usually follows within one to two seasons.",
-    "wouldChange": "Trousers and shorts dominating Paris SS27 (running now) and pre-spring retail buys.",
-    "addedIn": "2026-W40", "status": "active"
+    "category": "silhouette",
+    "segment": "womens",
+    "markets": [
+      "luxury",
+      "contemporary",
+      "high-street"
+    ],
+    "regions": [
+      "global"
+    ],
+    "stage": "early",
+    "swatch": "#8C6F9E",
+    "searchTerm": "midi skirt",
+    "reasoning": "Retailers told WWD that spring 2027 is 'skirt season', with the Prada skirt as the must-have. Prada put nearly every look in a skirt, and Fashionista called a bra plus a skirt the season's uniform. When buyers commit this early, the high street usually follows within one to two seasons.",
+    "wouldChange": "Trousers and shorts dominating Paris SS27 and the pre-spring retail buys.",
+    "addedIn": "2026-W40",
+    "status": "active"
   },
   {
     "id": "liquid-satin",
     "name": "Liquid satin",
     "definition": "Fluid, bias-cut satin replaces 2026's stiff taffeta — skirts, slips, pyjama shorts.",
-    "category": "material", "segment": "womens", "markets": ["luxury", "contemporary", "high-street"], "regions": ["global"],
-    "stage": "early", "swatch": "#D8CFC4", "searchTerm": "satin skirt",
-    "reasoning": "Who What Wear named liquid satin the fabric to watch for 2027 after seeing it at Ralph Lauren, Sandy Liang, Cult Gaia and DVF in New York, and Milan paired lingerie tops with satin pyjama shorts. It works with the lingerie-dressing trend, but so far the evidence is editorial only.",
+    "category": "material",
+    "segment": "womens",
+    "markets": [
+      "luxury",
+      "contemporary",
+      "high-street"
+    ],
+    "regions": [
+      "global"
+    ],
+    "stage": "early",
+    "swatch": "#D8CFC4",
+    "searchTerm": "satin skirt",
+    "reasoning": "Who What Wear named liquid satin the fabric to watch for 2027 after seeing it at Ralph Lauren, Sandy Liang, Cult Gaia and DVF. It fits the lingerie-dressing trend, but so far only one source group supports it.",
     "wouldChange": "No satin skirts or slips in Zara and Mango spring 2027 new-in.",
-    "addedIn": "2026-W40", "status": "active"
+    "addedIn": "2026-W40",
+    "status": "active"
   },
   {
     "id": "lingerie-dressing",
     "name": "Lingerie as daywear",
     "definition": "Visible bras, slips, plunging necklines and soft corsetry worn in daylight.",
-    "category": "aesthetic", "segment": "womens", "markets": ["luxury", "contemporary", "high-street"], "regions": ["global"],
-    "stage": "rising", "swatch": "#E8C4C0", "searchTerm": "slip dress",
-    "reasoning": "This is the most consistent SS27 story across cities: déshabillé in New York (Altuzarra, Christian Cowan), the bra as a statement piece in Milan, and romantic rather than lingerie-style corsets at Altuzarra and Khaite. Heuritech's shopper-image data independently forecasts deep-plunge tops up 47%, so it isn't only a runway idea.",
-    "wouldChange": "Heuritech revising plunge-top growth down, or backlash coverage that turns commercial buyers against it.",
-    "addedIn": "2026-W40", "status": "active"
+    "category": "aesthetic",
+    "segment": "womens",
+    "markets": [
+      "luxury",
+      "contemporary",
+      "high-street"
+    ],
+    "regions": [
+      "global"
+    ],
+    "stage": "rising",
+    "swatch": "#E8C4C0",
+    "searchTerm": "slip dress",
+    "reasoning": "This is the most consistent SS27 story across cities and source types: Milan retailers flagged bra tops, slips and boudoir dressing, New York showed déshabillé and romantic corsets, and Heuritech's shopper-image data independently forecasts deep-plunge tops up 47%. Buyers, editors and consumer data all point the same way.",
+    "wouldChange": "Heuritech revising plunge-top growth down, or buyers cutting it from spring orders.",
+    "addedIn": "2026-W40",
+    "status": "active"
   },
   {
     "id": "saturated-blue",
     "name": "Saturated blue",
     "definition": "Cobalt, royal and 'luminous' blues as the lead colour of 2027.",
-    "category": "colour", "segment": "unisex", "markets": ["luxury", "contemporary", "high-street"], "regions": ["global"],
-    "stage": "early", "swatch": "#1F4FD1", "searchTerm": "cobalt blue",
+    "category": "colour",
+    "segment": "unisex",
+    "markets": [
+      "luxury",
+      "contemporary",
+      "high-street"
+    ],
+    "regions": [
+      "global"
+    ],
+    "stage": "early",
+    "swatch": "#1F4FD1",
+    "searchTerm": "cobalt blue",
     "reasoning": "Forecasters and runways line up here. WGSN × Coloro named Luminous Blue the 2027 Colour of the Year, Pantone's NYFW SS27 report includes a deep regal blue, and in Copenhagen's SS27 data blue and pink together made up a fifth of the palette. Menswear treated blue as a foundation colour, not an accent.",
     "wouldChange": "Neutrals regaining share in the Paris SS27 colour data.",
-    "addedIn": "2026-W40", "status": "active"
+    "addedIn": "2026-W40",
+    "status": "active"
   },
   {
     "id": "pencil-skirt",
     "name": "The pencil skirt returns",
     "definition": "The narrow, knee-grazing pencil skirt comes back as a tailoring staple.",
-    "category": "silhouette", "segment": "womens", "markets": ["luxury", "contemporary"], "regions": ["global"],
-    "stage": "emerging", "swatch": "#3A3A3A", "searchTerm": "pencil skirt",
+    "category": "silhouette",
+    "segment": "womens",
+    "markets": [
+      "luxury",
+      "contemporary"
+    ],
+    "regions": [
+      "global"
+    ],
+    "stage": "emerging",
+    "swatch": "#3A3A3A",
+    "searchTerm": "pencil skirt",
     "reasoning": "Tagwalk's runway count shows pencil skirts up 335% on the previous season, the biggest jump of any garment it tracks. It's a single data source, and it's working against the looser silhouettes seen elsewhere, so treat it as a strong early signal, not a consensus.",
     "wouldChange": "A second, independent source (retail or search data) picking it up. Without one, it stays a runway blip.",
-    "addedIn": "2026-W40", "status": "active"
+    "addedIn": "2026-W40",
+    "status": "active"
   },
   {
     "id": "cropped-trousers",
     "name": "Capris & culottes",
     "definition": "Cropped trouser lengths — capri, culotte, cropped slim — replace full-length wide legs.",
-    "category": "silhouette", "segment": "womens", "markets": ["luxury", "contemporary", "high-street"], "regions": ["global"],
-    "stage": "early", "swatch": "#B9A88C", "searchTerm": "capri pants",
+    "category": "silhouette",
+    "segment": "womens",
+    "markets": [
+      "luxury",
+      "contemporary",
+      "high-street"
+    ],
+    "regions": [
+      "global"
+    ],
+    "stage": "early",
+    "swatch": "#B9A88C",
+    "searchTerm": "capri pants",
     "reasoning": "Tagwalk counts capris up 113% season on season, and Fashionista singled out culottes as New York's favourite cropped shape, both sleek (Calvin Klein, Fforme) and baggy (Area, Collina Strada). Runway data and editorial agree, but there's no shopper evidence yet.",
     "wouldChange": "Search interest for capris staying flat through the spring 2027 retail launch.",
-    "addedIn": "2026-W40", "status": "active"
+    "addedIn": "2026-W40",
+    "status": "active"
   },
   {
     "id": "ruffles-romance",
     "name": "Ruffles & romance",
     "definition": "Ruffled silhouettes, tulle and historical romance soften the season.",
-    "category": "silhouette", "segment": "womens", "markets": ["luxury", "contemporary"], "regions": ["global"],
-    "stage": "early", "swatch": "#F2E3E6", "searchTerm": "ruffle dress",
+    "category": "silhouette",
+    "segment": "womens",
+    "markets": [
+      "luxury",
+      "contemporary"
+    ],
+    "regions": [
+      "global"
+    ],
+    "stage": "early",
+    "swatch": "#F2E3E6",
+    "searchTerm": "ruffle dress",
     "reasoning": "Tagwalk counts ruffled silhouettes up 96% on the runway, and Heuritech's consumer data already shows an 'opulent romance' mood with historical references for this winter. The romance is there, but it's up against the sharper, sexier lingerie story for the same customer.",
     "wouldChange": "Heuritech's SS27 update not listing ruffles among growing details.",
-    "addedIn": "2026-W40", "status": "active"
+    "addedIn": "2026-W40",
+    "status": "active"
   },
   {
     "id": "micro-mini",
     "name": "Mod micro-mini",
     "definition": "Ultra-short 60s shift dresses and skirts.",
-    "category": "silhouette", "segment": "womens", "markets": ["contemporary", "high-street"], "regions": ["north-america", "europe"],
-    "stage": "emerging", "swatch": "#E4572E", "searchTerm": "mini shift dress",
+    "category": "silhouette",
+    "segment": "womens",
+    "markets": [
+      "contemporary",
+      "high-street"
+    ],
+    "regions": [
+      "north-america",
+      "europe"
+    ],
+    "stage": "emerging",
+    "swatch": "#E4572E",
+    "searchTerm": "mini shift dress",
     "reasoning": "In New York the mini got even shorter, with a 60s mod feel at Carolina Herrera and others. That's one editorial source against the much stronger midi and full-skirt signal, so it's a watch item for now.",
     "wouldChange": "London and Paris SS27 repeating it.",
-    "addedIn": "2026-W40", "status": "active"
+    "addedIn": "2026-W40",
+    "status": "retired"
   },
   {
     "id": "low-slung",
     "name": "Low-slung waists",
     "definition": "Waistbands drop — bumsters, low-rise trousers, knits tied at the hip.",
-    "category": "silhouette", "segment": "unisex", "markets": ["contemporary", "streetwear"], "regions": ["north-america"],
-    "stage": "emerging", "swatch": "#6C7A89", "searchTerm": "low rise pants",
-    "reasoning": "In New York, waistbands sat much lower, with a bumster revival led by emerging designers like Ben Doctor. The only evidence is one editorial source at emerging-designer level, so this is an early watch, not a call.",
-    "wouldChange": "A major house in Paris SS27 showing it.",
-    "addedIn": "2026-W40", "status": "active"
+    "category": "silhouette",
+    "segment": "unisex",
+    "markets": [
+      "contemporary",
+      "streetwear"
+    ],
+    "regions": [
+      "north-america"
+    ],
+    "stage": "emerging",
+    "swatch": "#6C7A89",
+    "searchTerm": "low rise pants",
+    "reasoning": "This trend is now backed by measured data, not just the runway: Heuritech shows low-waist jeans up 28% among women in Europe year on year, with double-digit growth forecast for the next 12 months while high-waist declines, and denim buyers report rises dropping. It's the most likely successor to the high-waisted barrel.",
+    "wouldChange": "Heuritech's low-waist growth stalling in its next update.",
+    "addedIn": "2026-W40",
+    "status": "active"
   },
   {
     "id": "weightless-fringe",
     "name": "Weightless fringe",
     "definition": "Light, swinging fringe and tassels — art-deco rather than western.",
-    "category": "material", "segment": "womens", "markets": ["luxury", "contemporary", "high-street"], "regions": ["global"],
-    "stage": "early", "swatch": "#C8B28A", "searchTerm": "fringe dress",
-    "reasoning": "Fringe showed up in three cities with the same lighter feel: in New York at Luar, Ulla Johnson and Monse, and in Milan at Bottega Veneta and Fendi, where it was 'lighter than air'. Agreement across cities is how a runway detail turns into a commercial one.",
-    "wouldChange": "Fringe missing from contemporary-brand spring buys (Style Arcade range data).",
-    "addedIn": "2026-W40", "status": "active"
+    "category": "material",
+    "segment": "womens",
+    "markets": [
+      "luxury",
+      "contemporary",
+      "high-street"
+    ],
+    "regions": [
+      "global"
+    ],
+    "stage": "early",
+    "swatch": "#C8B28A",
+    "searchTerm": "fringe dress",
+    "reasoning": "Fringe showed up in both New York and Milan with the same lighter feel: in New York at Luar, Ulla Johnson and Monse, and in Milan, where WWD's retailers noted 'lots of fringing', including Bottega Veneta's fringed straw bag. Buyers picking it up is how a runway detail turns commercial.",
+    "wouldChange": "Fringe missing from contemporary-brand spring buys.",
+    "addedIn": "2026-W40",
+    "status": "active"
   },
   {
     "id": "texturemaxxing",
     "name": "Texturemaxxing",
     "definition": "Feathers, beads, sequins, chainmail and fur trims — embellishment as everyday.",
-    "category": "material", "segment": "womens", "markets": ["luxury", "contemporary", "high-street"], "regions": ["global"],
-    "stage": "rising", "swatch": "#B08D57", "searchTerm": "sequin top",
+    "category": "material",
+    "segment": "womens",
+    "markets": [
+      "luxury",
+      "contemporary",
+      "high-street"
+    ],
+    "regions": [
+      "global"
+    ],
+    "stage": "rising",
+    "swatch": "#B08D57",
+    "searchTerm": "sequin top",
     "reasoning": "This season is in stores now. Who What Wear's AW26 round-up leads with heavy embellishment, and Heuritech's image data forecasts fur details up 14% and feathers up 12%, in line with a wider 'fun again' move away from minimalism.",
     "wouldChange": "Weak AW26 sell-through reported in Q4 trading updates.",
-    "addedIn": "2026-W40", "status": "active"
+    "addedIn": "2026-W40",
+    "status": "active"
   },
   {
     "id": "lace",
     "name": "Lace, everywhere",
     "definition": "Directional lace — on bombers, tops and menswear, not just lingerie.",
-    "category": "material", "segment": "unisex", "markets": ["luxury", "contemporary", "high-street"], "regions": ["global"],
-    "stage": "rising", "swatch": "#EFE6DA", "searchTerm": "lace top",
-    "reasoning": "This is one of the best-supported calls in the edition: Pinterest Predicts named 'Laced Up' a 2026 trend, Heuritech forecasts fine lace up 42% and lace-detail tops up 107%, and it has reached menswear through Simone Rocha's debut. Search data, image data and runway all point the same way.",
+    "category": "material",
+    "segment": "unisex",
+    "markets": [
+      "luxury",
+      "contemporary",
+      "high-street"
+    ],
+    "regions": [
+      "global"
+    ],
+    "stage": "rising",
+    "swatch": "#EFE6DA",
+    "searchTerm": "lace top",
+    "reasoning": "This is one of the best-supported calls in the edition: Pinterest Predicts named 'Laced Up' a 2026 trend, Heuritech forecasts fine lace up 42% and lace-detail tops up 107%, Milan's SS27 leaned on lace transparencies, and it has reached menswear through Simone Rocha. Search data, image data and runway all agree.",
     "wouldChange": "Heuritech's lace growth slowing below 10%.",
-    "addedIn": "2026-W40", "status": "active"
+    "addedIn": "2026-W40",
+    "status": "active"
   },
   {
     "id": "big-dots",
     "name": "Big dots",
     "definition": "Oversized polka dots on dresses and midi skirts.",
-    "category": "print", "segment": "womens", "markets": ["contemporary", "high-street"], "regions": ["europe"],
-    "stage": "early", "swatch": "#1C1C1C", "searchTerm": "polka dot dress",
+    "category": "print",
+    "segment": "womens",
+    "markets": [
+      "contemporary",
+      "high-street"
+    ],
+    "regions": [
+      "europe"
+    ],
+    "stage": "early",
+    "swatch": "#1C1C1C",
+    "searchTerm": "polka dot dress",
     "reasoning": "Heuritech's fastest-growing print: it forecasts Big Dots up 147% in Q4 2026 against Q4 2025 in EU womenswear, after +55% in SS26. The numbers are strong but all come from one forecaster, so the band stays wide.",
     "wouldChange": "A second source (retail or search) confirming it, or Heuritech revising it down.",
-    "addedIn": "2026-W40", "status": "active"
+    "addedIn": "2026-W40",
+    "status": "active"
   },
   {
     "id": "plaid",
     "name": "Heritage plaid",
     "definition": "Checks, tartans and Prince of Wales — heritage patterns in menswear and beyond.",
-    "category": "print", "segment": "unisex", "markets": ["luxury", "contemporary", "high-street"], "regions": ["global"],
-    "stage": "rising", "swatch": "#7A2E2E", "searchTerm": "plaid jacket",
+    "category": "print",
+    "segment": "unisex",
+    "markets": [
+      "luxury",
+      "contemporary",
+      "high-street"
+    ],
+    "regions": [
+      "global"
+    ],
+    "stage": "rising",
+    "swatch": "#7A2E2E",
+    "searchTerm": "plaid jacket",
     "reasoning": "Heuritech forecasts plaid up 16% for men in Q4 2026, and Style Arcade's FW26 menswear report found checks and Prince of Wales wool everywhere at Ralph Lauren, Dior and Zegna. It's seasonal and steady, not explosive.",
     "wouldChange": "Weak plaid sell-through in the Q4 trading updates.",
-    "addedIn": "2026-W40", "status": "active"
+    "addedIn": "2026-W40",
+    "status": "active"
   },
   {
     "id": "suede",
     "name": "Suede",
     "definition": "Suede jackets, bags and loafers in warm, deep tones.",
-    "category": "material", "segment": "unisex", "markets": ["luxury", "contemporary", "high-street"], "regions": ["global"],
-    "stage": "peak", "swatch": "#8B5A3C", "searchTerm": "suede jacket",
-    "reasoning": "Suede is at its peak now. Heuritech forecasts it up 45% this season, and stylists say espresso suede is leading fall bags. After more than two years of growth, the question is when it slows, not whether it's mainstream.",
+    "category": "material",
+    "segment": "unisex",
+    "markets": [
+      "luxury",
+      "contemporary",
+      "high-street"
+    ],
+    "regions": [
+      "global"
+    ],
+    "stage": "peak",
+    "swatch": "#8B5A3C",
+    "searchTerm": "suede jacket",
+    "reasoning": "Suede is at its peak. Heuritech forecasts it up 45% this season, and WWD's retail survey calls brown suede 'the choice of the season' in fall 2026 footwear. After more than two years of growth, the open question is when it slows, not whether it's mainstream.",
     "wouldChange": "Heuritech's 12-month forecast turning negative.",
-    "addedIn": "2026-W40", "status": "active"
+    "addedIn": "2026-W40",
+    "status": "active"
   },
   {
     "id": "chocolate-brown",
     "name": "Chocolate brown",
     "definition": "Brown as the new neutral — cocoa, espresso, golden brown.",
-    "category": "colour", "segment": "unisex", "markets": ["luxury", "contemporary", "high-street"], "regions": ["global"],
-    "stage": "peak", "swatch": "#4A2C1E", "searchTerm": "brown coat",
-    "reasoning": "WGSN × Coloro put Cocoa Powder in the AW26/27 palette, stylists call chocolate brown the colour of fall 2026, and Pantone lists a dark golden brown as a year-round neutral for SS27. That's a plateau, not a spike.",
+    "category": "colour",
+    "segment": "unisex",
+    "markets": [
+      "luxury",
+      "contemporary",
+      "high-street"
+    ],
+    "regions": [
+      "global"
+    ],
+    "stage": "peak",
+    "swatch": "#4A2C1E",
+    "searchTerm": "brown coat",
+    "reasoning": "WGSN × Coloro put Cocoa Powder in the AW26/27 palette, retailers name chocolate brown the colour of fall 2026 footwear, and Pantone lists a dark golden brown as a year-round neutral for SS27. That's a plateau, not a spike.",
     "wouldChange": "Saturated colour pushing brown out of the SS27 retail palette.",
-    "addedIn": "2026-W40", "status": "active"
+    "addedIn": "2026-W40",
+    "status": "active"
   },
   {
     "id": "red-spectrum",
     "name": "Cherry to oxblood",
     "definition": "Deep reds and red-purples, from cherry to oxblood.",
-    "category": "colour", "segment": "unisex", "markets": ["luxury", "contemporary", "high-street"], "regions": ["global"],
-    "stage": "rising", "swatch": "#7A1628", "searchTerm": "burgundy",
+    "category": "colour",
+    "segment": "unisex",
+    "markets": [
+      "luxury",
+      "contemporary",
+      "high-street"
+    ],
+    "regions": [
+      "global"
+    ],
+    "stage": "rising",
+    "swatch": "#7A1628",
+    "searchTerm": "burgundy",
     "reasoning": "Heuritech's FW26 data leans on 'rich red-purple hues', and Pantone's NYFW SS27 palette carries a 'dark, heated red' into next spring. It has the rare backing to span two seasons.",
     "wouldChange": "Red falling out of the Paris SS27 colour counts.",
-    "addedIn": "2026-W40", "status": "active"
+    "addedIn": "2026-W40",
+    "status": "active"
   },
   {
     "id": "teal",
     "name": "Teal & turquoise",
     "definition": "Blue-greens — WGSN's Transformative Teal through street-style turquoise.",
-    "category": "colour", "segment": "unisex", "markets": ["contemporary", "high-street"], "regions": ["global"],
-    "stage": "early", "swatch": "#0F7C7C", "searchTerm": "teal dress",
+    "category": "colour",
+    "segment": "unisex",
+    "markets": [
+      "contemporary",
+      "high-street"
+    ],
+    "regions": [
+      "global"
+    ],
+    "stage": "early",
+    "swatch": "#0F7C7C",
+    "searchTerm": "teal dress",
     "reasoning": "WGSN × Coloro picked Transformative Teal for AW26/27, Pantone's SS27 report includes an energising mid blue-green, and turquoise stood out in Copenhagen's SS27 street style. Forecasters called it early, and the street is catching up.",
     "wouldChange": "Teal missing from high-street AW26 markdowns (which would mean it didn't sell).",
-    "addedIn": "2026-W40", "status": "active"
+    "addedIn": "2026-W40",
+    "status": "active"
   },
   {
     "id": "pink",
     "name": "Pink, every shade",
     "definition": "Bubblegum, powder and neon pink — in menswear as much as womenswear.",
-    "category": "colour", "segment": "unisex", "markets": ["contemporary", "high-street"], "regions": ["europe", "global"],
-    "stage": "early", "swatch": "#F29CB8", "searchTerm": "pink dress",
+    "category": "colour",
+    "segment": "unisex",
+    "markets": [
+      "contemporary",
+      "high-street"
+    ],
+    "regions": [
+      "europe",
+      "global"
+    ],
+    "stage": "early",
+    "swatch": "#F29CB8",
+    "searchTerm": "pink dress",
     "reasoning": "In Copenhagen's SS27 data, blue and pink made up 20% of the palette, and pink took over the street style. The SS27 men's shows treated pink and lavender as foundation colours, and Pantone's SS27 report includes an optimistic light pink.",
     "wouldChange": "Neutrals holding their share in the Paris SS27 data.",
-    "addedIn": "2026-W40", "status": "active"
+    "addedIn": "2026-W40",
+    "status": "active"
   },
   {
     "id": "boho",
     "name": "Boho, brightened",
     "definition": "Bohemian dressing, now sunnier: paisley, floaty shapes, sugary shades.",
-    "category": "aesthetic", "segment": "womens", "markets": ["contemporary", "high-street"], "regions": ["global"],
-    "stage": "peak", "swatch": "#C58B5A", "searchTerm": "boho chic",
-    "reasoning": "Search interest in 'boho chic' is up 30% year on year worldwide (Google Trends, reported by Heuritech), which puts boho firmly in the mainstream, and Milan SS27 gave it a brighter update at Etro. A trend that's peaking and gets a fresh take often stays on a plateau instead of dropping off.",
+    "category": "aesthetic",
+    "segment": "womens",
+    "markets": [
+      "contemporary",
+      "high-street"
+    ],
+    "regions": [
+      "global"
+    ],
+    "stage": "peak",
+    "swatch": "#C58B5A",
+    "searchTerm": "boho chic",
+    "reasoning": "Search interest in 'boho chic' is up 30% year on year worldwide (Google Trends, reported by Heuritech), and WWD's denim coverage names boho a defining direction for 2026. Measured demand and the trade press both say it's mainstream now.",
     "wouldChange": "Year-on-year search growth turning negative.",
-    "addedIn": "2026-W40", "status": "active"
+    "addedIn": "2026-W40",
+    "status": "active"
   },
   {
     "id": "barrel-leg",
     "name": "Barrel-leg denim",
     "definition": "Curved, hip-to-ankle barrel jeans.",
-    "category": "silhouette", "segment": "womens", "markets": ["contemporary", "high-street"], "regions": ["global"],
-    "stage": "peak", "swatch": "#5B7FA6", "searchTerm": "barrel jeans",
-    "reasoning": "Barrel jeans have been mainstream for over a year, and Refinery29 calls the silhouette 'here to stay' for 2026. The rise of cropped trousers on the SS27 runways is the first real challenger.",
+    "category": "silhouette",
+    "segment": "womens",
+    "markets": [
+      "contemporary",
+      "high-street"
+    ],
+    "regions": [
+      "global"
+    ],
+    "stage": "peak",
+    "swatch": "#5B7FA6",
+    "searchTerm": "barrel jeans",
+    "reasoning": "Barrel jeans have been mainstream for over a year, and denim buyers say they're holding up. But the same WWD Sourcing Journal reporting flags slimmer legs and lower rises starting to take over. It's at its peak, with a successor already visible.",
     "wouldChange": "Search interest falling below its 2025 average.",
-    "addedIn": "2026-W40", "status": "active"
+    "addedIn": "2026-W40",
+    "status": "active"
   },
   {
     "id": "slim-sneakers",
     "name": "Slim, low-profile sneakers",
     "definition": "Flat soles and close-to-foot uppers: Taekwondo, Speedcat, retro runners.",
-    "category": "footwear", "segment": "unisex", "markets": ["streetwear", "contemporary", "high-street"], "regions": ["global"],
-    "stage": "peak", "swatch": "#D9D4C7", "searchTerm": "slim sneakers",
-    "reasoning": "Retailers report that slim, low-profile styles (adidas Taekwondo, Puma Speedcat) are firmly established, and Lyst's shopper data has put Nike collaborations among the hottest products. It's clearly mainstream now; the only open question is how long it lasts.",
+    "category": "footwear",
+    "segment": "unisex",
+    "markets": [
+      "streetwear",
+      "contemporary",
+      "high-street"
+    ],
+    "regions": [
+      "global"
+    ],
+    "stage": "peak",
+    "swatch": "#D9D4C7",
+    "searchTerm": "slim sneakers",
+    "reasoning": "Lyst's shopper data has put Nike styles, including the Jacquemus collaboration, among the hottest products. But StockX shows performance-lifestyle runners growing fastest now, and that's the likely successor. This is mainstream today with a shorter shelf life.",
     "wouldChange": "A chunky or tech-runner silhouette taking the top sneaker slot in the Lyst Index.",
-    "addedIn": "2026-W40", "status": "active"
+    "addedIn": "2026-W40",
+    "status": "active"
   },
   {
     "id": "loafers",
     "name": "The loafer",
     "definition": "Loafers — suede, polished, PVC — as the everyday shoe.",
-    "category": "footwear", "segment": "unisex", "markets": ["luxury", "contemporary", "high-street"], "regions": ["global"],
-    "stage": "peak", "swatch": "#2B1B14", "searchTerm": "loafers",
-    "reasoning": "Saint Laurent and The Row loafers were the second and fourth hottest products on the Lyst Index, and Heuritech still forecasts suede loafers up 7% over the next 12 months. Slow, steady growth like this points to a new classic, not a spike.",
+    "category": "footwear",
+    "segment": "unisex",
+    "markets": [
+      "luxury",
+      "contemporary",
+      "high-street"
+    ],
+    "regions": [
+      "global"
+    ],
+    "stage": "peak",
+    "swatch": "#2B1B14",
+    "searchTerm": "loafers",
+    "reasoning": "Saint Laurent and The Row loafers were the second and fourth hottest products on the Lyst Index, footwear retailers expect loafers to carry into fall 2026, and Heuritech still forecasts suede loafers up 7% over 12 months. Slow, steady growth like this points to a new classic.",
     "wouldChange": "No loafer in the Lyst top-10 products for two quarters running.",
-    "addedIn": "2026-W40", "status": "active"
+    "addedIn": "2026-W40",
+    "status": "active"
   },
   {
     "id": "poetcore",
     "name": "Poetcore",
     "definition": "Modern academia: oversized knits, vintage blazers, corduroy, messenger bags.",
-    "category": "aesthetic", "segment": "unisex", "markets": ["luxury", "contemporary", "high-street"], "regions": ["global"],
-    "stage": "rising", "swatch": "#6B5B4B", "searchTerm": "poetcore",
+    "category": "aesthetic",
+    "segment": "unisex",
+    "markets": [
+      "luxury",
+      "contemporary",
+      "high-street"
+    ],
+    "regions": [
+      "global"
+    ],
+    "stage": "rising",
+    "swatch": "#6B5B4B",
+    "searchTerm": "poetcore",
     "reasoning": "Pinterest Predicts coined poetcore for 2026 from rising searches for 'the poet aesthetic' and 'dark academia'. Style Arcade then saw men's runways move from streetwear to modern academia at Dior, Ralph Lauren and Zegna. A search-led call confirmed by the runway is a good pattern.",
     "wouldChange": "Pinterest's 2027 report dropping it, or streetwear regaining the Lyst brand ranking.",
-    "addedIn": "2026-W40", "status": "active"
+    "addedIn": "2026-W40",
+    "status": "active"
   },
   {
     "id": "glamoratti",
     "name": "Glamoratti maximalism",
     "definition": "Dialled-up opulence: sculpted shoulders, funnel necks, colour-blocking.",
-    "category": "aesthetic", "segment": "unisex", "markets": ["luxury", "contemporary"], "regions": ["global"],
-    "stage": "rising", "swatch": "#B8860B", "searchTerm": "maximalist fashion",
-    "reasoning": "Pinterest's 'Glamoratti' prediction, Who What Wear's AW26 framing ('a lesson in maximalism') and Copenhagen's SS27 data ('colour is back, neutrals are out') all describe the same swing away from minimalism. It's the backdrop to several of the individual trends in this edition.",
+    "category": "aesthetic",
+    "segment": "unisex",
+    "markets": [
+      "luxury",
+      "contemporary"
+    ],
+    "regions": [
+      "global"
+    ],
+    "stage": "rising",
+    "swatch": "#B8860B",
+    "searchTerm": "maximalist fashion",
+    "reasoning": "Several sources describe the same move away from minimalism, from next season through 2028. Pinterest's 'Glamoratti' prediction, Who What Wear's AW26 framing and Copenhagen's SS27 data ('colour is back, neutrals are out') cover the near term. Longer out, Euromonitor's 'Fiercely Unfiltered' consumer research and WGSN's 2028 'Challengers' persona describe the same appetite for bold self-expression.",
     "wouldChange": "Minimal, neutral collections winning Paris SS27 reviews.",
-    "addedIn": "2026-W40", "status": "active"
+    "addedIn": "2026-W40",
+    "status": "active"
   },
   {
     "id": "quiet-luxury",
     "name": "Quiet luxury",
     "definition": "Logo-less beige minimalism as a wealth signal.",
-    "category": "aesthetic", "segment": "unisex", "markets": ["luxury", "contemporary"], "regions": ["global"],
-    "stage": "fading", "swatch": "#D8CBB5", "searchTerm": "quiet luxury",
+    "category": "aesthetic",
+    "segment": "unisex",
+    "markets": [
+      "luxury",
+      "contemporary"
+    ],
+    "regions": [
+      "global"
+    ],
+    "stage": "fading",
+    "swatch": "#D8CBB5",
+    "searchTerm": "quiet luxury",
     "reasoning": "Several independent sources say it's ending. FashionUnited's Copenhagen analysis says the aspirational customer who wore beige to signal wealth is walking away, Who What Wear frames 2026 as the shift from quiet luxury to maximalism, and Pinterest's 2026 report is built on the backlash. It will leave behind basics, but not a trend.",
     "wouldChange": "Neutral palettes regaining share in the SS27 runway data.",
-    "addedIn": "2026-W40", "status": "active"
+    "addedIn": "2026-W40",
+    "status": "active"
   },
   {
     "id": "bag-charms",
     "name": "Bag charms",
     "definition": "Keychains and trinkets clipped to handbags.",
-    "category": "bags", "segment": "womens", "markets": ["contemporary", "high-street"], "regions": ["global"],
-    "stage": "fading", "swatch": "#D4A5A5", "searchTerm": "bag charms",
+    "category": "bags",
+    "segment": "womens",
+    "markets": [
+      "contemporary",
+      "high-street"
+    ],
+    "regions": [
+      "global"
+    ],
+    "stage": "fading",
+    "swatch": "#D4A5A5",
+    "searchTerm": "bag charms",
     "reasoning": "Who What Wear lists bag charms among the dated bag trends for 2026, as texture and shape take over as the statement. Only one source says it directly, but it fits the wider move from novelty to craft.",
     "wouldChange": "Search interest spiking again in Q4 gift season.",
-    "addedIn": "2026-W40", "status": "active"
+    "addedIn": "2026-W40",
+    "status": "active"
   },
   {
     "id": "coquette",
     "name": "Coquette",
     "definition": "Bows, ballet pinks and hyper-girlish styling.",
-    "category": "aesthetic", "segment": "womens", "markets": ["contemporary", "high-street"], "regions": ["global"],
-    "stage": "fading", "swatch": "#F4D6DC", "searchTerm": "coquette",
+    "category": "aesthetic",
+    "segment": "womens",
+    "markets": [
+      "contemporary",
+      "high-street"
+    ],
+    "regions": [
+      "global"
+    ],
+    "stage": "fading",
+    "swatch": "#F4D6DC",
+    "searchTerm": "coquette",
     "reasoning": "It's losing favour: critics call it performative, and fatigue with the aesthetic is spreading. Its romantic side lives on through lace and ruffles, just without the bows.",
     "wouldChange": "Search interest reaccelerating year on year.",
-    "addedIn": "2026-W40", "status": "active"
+    "addedIn": "2026-W40",
+    "status": "retired"
   },
   {
     "id": "animal-print",
     "name": "Animal print",
     "definition": "Leopard, zebra, snake and cow print.",
-    "category": "print", "segment": "womens", "markets": ["luxury", "contemporary", "high-street"], "regions": ["global"],
-    "stage": "peak", "swatch": "#A0703A", "searchTerm": "leopard print",
-    "reasoning": "The sources disagree here, and that's the story. Heuritech's consumer-image data has it turning down (leopard −10% in dresses, zebra and snake −4%, cow −29%), while Milan's SS27 runways pushed it loudly (Roberto Cavalli, Fendi's zebra Baguettes). The wide band reflects that disagreement: the high street may keep going for one more season while early adopters move on.",
+    "category": "print",
+    "segment": "womens",
+    "markets": [
+      "luxury",
+      "contemporary",
+      "high-street"
+    ],
+    "regions": [
+      "global"
+    ],
+    "stage": "peak",
+    "swatch": "#A0703A",
+    "searchTerm": "leopard print",
+    "reasoning": "The sources disagree here, and that's the story. Heuritech's consumer-image data has it turning down (leopard −10% in dresses, cow −29%), while Roberto Cavalli's SS27 runway went all in on leopard and zebra and fall footwear is full of animal print. The wide band reflects that disagreement.",
     "wouldChange": "Heuritech's SS27 update turning positive would settle it upward.",
-    "addedIn": "2026-W40", "status": "active"
+    "addedIn": "2026-W40",
+    "status": "active"
   },
   {
     "id": "east-west-bags",
     "name": "East-west bags",
     "definition": "Long, horizontal bags — from slim baguettes to bowling bags.",
-    "category": "bags", "segment": "womens", "markets": ["luxury", "contemporary", "high-street"], "regions": ["global"],
-    "stage": "peak", "swatch": "#6E4B3A", "searchTerm": "east west bag",
-    "reasoning": "RUSSH calls 2026 'the year of east-west bags', and Who What Wear's fall 2026 bag coverage follows designers reworking the shape (Chanel, Celine, Coach, Khaite). It's mainstream now, and the next move is to bigger, more structured versions.",
+    "category": "bags",
+    "segment": "womens",
+    "markets": [
+      "luxury",
+      "contemporary",
+      "high-street"
+    ],
+    "regions": [
+      "global"
+    ],
+    "stage": "peak",
+    "swatch": "#6E4B3A",
+    "searchTerm": "east west bag",
+    "reasoning": "Who What Wear's reporting has east-west as the year's defining bag shape, reworked by Chanel, Celine, Coach and Khaite. Only one source group supports it after the source clean-up, so the band is wide.",
     "wouldChange": "An east-west bag missing from the Lyst hottest products for two quarters.",
-    "addedIn": "2026-W40", "status": "active"
+    "addedIn": "2026-W40",
+    "status": "active"
   },
   {
     "id": "brooches",
     "name": "The brooch revival",
     "definition": "Brooches on lapels, in hair, clustered on necklines — for men too.",
-    "category": "jewellery", "segment": "unisex", "markets": ["luxury", "contemporary", "high-street"], "regions": ["global"],
-    "stage": "rising", "swatch": "#C0A060", "searchTerm": "brooch",
-    "reasoning": "Pinterest flagged men driving a brooch revival, jewellery designers name antique brooches a 2026 trend, and brooches stood out in Copenhagen's SS27 street style and on Dior's men's runway. Signals from four independent directions, at low cost to buy, make this one of the likelier small calls.",
+    "category": "jewellery",
+    "segment": "unisex",
+    "markets": [
+      "luxury",
+      "contemporary",
+      "high-street"
+    ],
+    "regions": [
+      "global"
+    ],
+    "stage": "rising",
+    "swatch": "#C0A060",
+    "searchTerm": "brooch",
+    "reasoning": "Pinterest's search data flagged men driving a brooch revival, and brooches stood out in Copenhagen's SS27 street style. That's measured search behaviour plus street confirmation, at a low price point: a likely small call.",
     "wouldChange": "High-street jewellery ranges skipping brooches for holiday 2026.",
-    "addedIn": "2026-W40", "status": "active"
+    "addedIn": "2026-W40",
+    "status": "active"
   },
   {
     "id": "statement-jewellery",
     "name": "Statement jewellery",
     "definition": "Chandelier earrings, cocktail rings, coloured stones — anything but minimal.",
-    "category": "jewellery", "segment": "womens", "markets": ["luxury", "contemporary"], "regions": ["global"],
-    "stage": "rising", "swatch": "#D4AF37", "searchTerm": "chandelier earrings",
-    "reasoning": "BoF × McKinsey list 'Jewellery Sparkles' among the ten themes of 2026, as the category holds up better than clothing. Editors describe 2026 jewellery as 'everything but minimal', with chandelier earrings in front.",
+    "category": "jewellery",
+    "segment": "womens",
+    "markets": [
+      "luxury",
+      "contemporary"
+    ],
+    "regions": [
+      "global"
+    ],
+    "stage": "rising",
+    "swatch": "#D4AF37",
+    "searchTerm": "chandelier earrings",
+    "reasoning": "BoF × McKinsey list 'Jewellery Sparkles' among the ten themes of 2026 as the category holds up better than clothing, and Marie Claire describes 2026 jewellery as 'everything but minimal', with chandelier earrings in front.",
     "wouldChange": "Jewellery sales slowing in the luxury groups' Q3 results.",
-    "addedIn": "2026-W40", "status": "active"
+    "addedIn": "2026-W40",
+    "status": "active"
   },
   {
     "id": "sportsmart",
     "name": "Sportsmart",
     "definition": "Technical sportswear meets romantic shapes: ringer tees, blouson windbreakers, sneaker collabs.",
-    "category": "aesthetic", "segment": "unisex", "markets": ["contemporary", "high-street", "streetwear"], "regions": ["global"],
-    "stage": "rising", "swatch": "#3E6B48", "searchTerm": "track jacket",
+    "category": "aesthetic",
+    "segment": "unisex",
+    "markets": [
+      "contemporary",
+      "high-street",
+      "streetwear"
+    ],
+    "regions": [
+      "global"
+    ],
+    "stage": "rising",
+    "swatch": "#3E6B48",
+    "searchTerm": "track jacket",
     "reasoning": "Heuritech names 'sportsmart' a key FW26 direction, forecasting ringer tees up 38% and blouson windbreakers up 10%. Lyst's Q2 index was 'all about desire, sport and summer', with Miu Miu × New Balance pushing demand.",
     "wouldChange": "Sport collaborations dropping out of the Lyst Q3 product ranking.",
-    "addedIn": "2026-W40", "status": "active"
+    "addedIn": "2026-W40",
+    "status": "active"
   },
   {
     "id": "linen-tailoring",
     "name": "Linen tailoring",
     "definition": "Soft linen suits, 1940s double-breasted jackets, open vests over shirts.",
-    "category": "silhouette", "segment": "mens", "markets": ["luxury", "contemporary"], "regions": ["global"],
-    "stage": "early", "swatch": "#D9CBB0", "searchTerm": "linen suit",
-    "reasoning": "Style Arcade's SS27 menswear report found linen promoted to 'the men's suit fabric of choice', part of a relaxed-tailoring shift across Pitti, Milan and Paris. It's a single source, but it's a retail-analytics platform that tracks what buyers actually pick up.",
+    "category": "silhouette",
+    "segment": "mens",
+    "markets": [
+      "luxury",
+      "contemporary"
+    ],
+    "regions": [
+      "global"
+    ],
+    "stage": "early",
+    "swatch": "#D9CBB0",
+    "searchTerm": "linen suit",
+    "reasoning": "Two independent reads of SS27 menswear agree: WWD reports Milan suits slimming down and lightening in linen, silk and seersucker, and Style Arcade calls linen 'the men's suit fabric of choice'. The runway and a retail-analytics platform say the same thing.",
     "wouldChange": "Menswear retailers' spring 2027 buys leaning on knit and sport instead.",
-    "addedIn": "2026-W40", "status": "active"
+    "addedIn": "2026-W40",
+    "status": "active"
   },
   {
     "id": "heat-dressing",
-    "name": "Chic in the heat",
-    "definition": "Clothes designed for 35°C+ cities: breathable, loose, still sharp.",
-    "category": "aesthetic", "segment": "unisex", "markets": ["contemporary", "high-street"], "regions": ["global"],
-    "stage": "emerging", "swatch": "#F0D9A8", "searchTerm": "heatwave outfits",
-    "reasoning": "Style Arcade calls city heat dressing a 'real commercial opportunity' after the record-heat SS27 menswear season, and WGSN's AW26/27 macro trends are built around unpredictable weather and year-round wardrobes. This is a structural trend: slow to build but sticky once it takes hold.",
-    "wouldChange": "A cool summer in 2027 would delay it but not kill it.",
-    "addedIn": "2026-W40", "status": "active"
+    "name": "Climate-adaptive dressing",
+    "definition": "Clothes built for extreme heat and unstable weather: light, breathable, performance-natural.",
+    "category": "aesthetic",
+    "segment": "unisex",
+    "markets": [
+      "contemporary",
+      "high-street"
+    ],
+    "regions": [
+      "global"
+    ],
+    "stage": "early",
+    "swatch": "#F0D9A8",
+    "searchTerm": "heatwave outfits",
+    "reasoning": "This is a structural trend backed across every time distance. Paris buyers dealing with 40°C heat prioritised light, adaptable wardrobes for SS27 (WWD), Première Vision's AW27-28 fabrics centre on breathability and PFAS-free weatherproofing, WGSN's macro trends assume unpredictable weather is the new normal, and WWD reports extreme heat is already straining fashion's seasonal calendar. It builds slowly but is unlikely to reverse.",
+    "wouldChange": "A run of mild summers would slow it; it wouldn't reverse the supply-chain shift.",
+    "addedIn": "2026-W40",
+    "status": "active"
   },
   {
     "id": "nature-motifs",
     "name": "Nature motifs in menswear",
     "definition": "Florals, tapestry flowers and heavy patterning on men's pieces.",
-    "category": "print", "segment": "mens", "markets": ["luxury", "contemporary"], "regions": ["global"],
-    "stage": "early", "swatch": "#5E7F4F", "searchTerm": "floral shirt men",
+    "category": "print",
+    "segment": "mens",
+    "markets": [
+      "luxury",
+      "contemporary"
+    ],
+    "regions": [
+      "global"
+    ],
+    "stage": "early",
+    "swatch": "#5E7F4F",
+    "searchTerm": "floral shirt men",
     "reasoning": "Style Arcade saw nature motifs become 'a main character' in SS27 menswear (Givenchy's flower-tapestry bombers) and heavy patterning replacing minimal lines. For now it's a single source.",
     "wouldChange": "A second source confirming it once SS27 menswear lands in stores.",
-    "addedIn": "2026-W40", "status": "active"
+    "addedIn": "2026-W40",
+    "status": "active"
+  },
+  {
+    "id": "terracotta-earth",
+    "name": "Terracotta & Radiant Earth",
+    "definition": "Clay, rust and burnt red-orange as the next warm neutral.",
+    "category": "colour",
+    "segment": "unisex",
+    "markets": [
+      "luxury",
+      "contemporary",
+      "high-street"
+    ],
+    "regions": [
+      "global"
+    ],
+    "stage": "emerging",
+    "swatch": "#B5532F",
+    "searchTerm": "terracotta",
+    "reasoning": "This is the clearest long-range colour call in the edition, with support at every lead time. Future Snoops sees SS27 moving to warm vintage hues like copper brown and deep coral, Pitti Filati's AW27-28 yarns lean on clay and red earth, and WGSN × Coloro named Radiant Earth, a clay-like burnt red-orange, Colour of the Year 2028. When yarn spinners and colour forecasters agree two years out, a colour usually reaches mass retail.",
+    "wouldChange": "Terracotta missing from Première Vision's SS28 palette (February 2027).",
+    "addedIn": "2026-W40",
+    "status": "active"
+  },
+  {
+    "id": "earthy-greens",
+    "name": "Earthy greens",
+    "definition": "Moss, lichen and deep botanical greens as core colours.",
+    "category": "colour",
+    "segment": "unisex",
+    "markets": [
+      "luxury",
+      "contemporary",
+      "high-street"
+    ],
+    "regions": [
+      "global"
+    ],
+    "stage": "emerging",
+    "swatch": "#4F6B45",
+    "searchTerm": "olive green",
+    "reasoning": "The supply chain is leading here, with fashion following. Première Vision's AW27-28 fabric palette and Pitti Filati's AW27-28 yarns both centre on earthy, botanical greens, and Copenhagen's SS27 data already shows green gaining. Fabric and yarn fairs set what's physically available about 18 months out.",
+    "wouldChange": "The AW27 runways (February–March 2027) ignoring it.",
+    "addedIn": "2026-W40",
+    "status": "active"
+  },
+  {
+    "id": "sorbet-pastels",
+    "name": "Sorbet pastels",
+    "definition": "Butter yellow, pistachio, lavender and mint, especially in menswear.",
+    "category": "colour",
+    "segment": "unisex",
+    "markets": [
+      "luxury",
+      "contemporary",
+      "high-street"
+    ],
+    "regions": [
+      "global"
+    ],
+    "stage": "early",
+    "swatch": "#CFE3C4",
+    "searchTerm": "pastel shirt",
+    "reasoning": "SS27 menswear moved from dopamine brights to sorbet and sun-faded tones (WWD), Style Arcade saw pastels used as foundation colours rather than accents, and Pitti Filati carries lilac and pink into AW27-28 knitwear, which suggests more than a one-season look.",
+    "wouldChange": "Spring 2027 menswear retail leading with neutrals instead.",
+    "addedIn": "2026-W40",
+    "status": "active"
+  },
+  {
+    "id": "archive-vintage",
+    "name": "Archive & vintage hunting",
+    "definition": "Buying specific past designer eras and vintage pieces as the status item.",
+    "category": "aesthetic",
+    "segment": "unisex",
+    "markets": [
+      "luxury",
+      "contemporary"
+    ],
+    "regions": [
+      "global"
+    ],
+    "stage": "rising",
+    "swatch": "#8C7A5B",
+    "searchTerm": "vintage designer",
+    "reasoning": "This is the best-evidenced trend in the edition across time distances. The RealReal measures vintage demand up 432% since 2020, with saved searches for 'Phoebe Philo Celine' up 650%. ThredUp sees Gen Z switching to deliberate 'holy grail' hunting, BoF × McKinsey forecast resale growing two to three times faster than new clothing through 2027, and WGSN's 2028 'Keepers' measure status by provenance and longevity.",
+    "wouldChange": "Resale growth slowing to firsthand levels in the 2027 reports.",
+    "addedIn": "2026-W40",
+    "status": "active"
+  },
+  {
+    "id": "performance-runners",
+    "name": "Performance-lifestyle runners",
+    "definition": "Technical running shoes (Mizuno, Saucony, Salomon, New Balance) worn as everyday sneakers.",
+    "category": "footwear",
+    "segment": "unisex",
+    "markets": [
+      "streetwear",
+      "contemporary",
+      "high-street"
+    ],
+    "regions": [
+      "global"
+    ],
+    "stage": "rising",
+    "swatch": "#6F8FA6",
+    "searchTerm": "mizuno sneakers",
+    "reasoning": "StockX's resale data shows Mizuno as the fastest-growing sneaker brand (+124%), followed by Saucony and Salomon, all performance-lifestyle silhouettes, and Lyst's Q2 index was driven by sport, including Miu Miu × New Balance. Measured demand is moving from slim retro sneakers toward technical runners.",
+    "wouldChange": "The StockX mid-year report showing the growth reversing.",
+    "addedIn": "2026-W40",
+    "status": "active"
   }
 ]

@@ -1,4 +1,4 @@
-import type { Category, Stage, Stance, Tier } from '../data/schema'
+import type { Adopter, Category, Stage, Stance, Tier } from '../data/schema'
 import { addMonths } from './scoring'
 
 export const pct = (p: number) => `${Math.round(p * 100)}%`
@@ -57,6 +57,21 @@ export const CATEGORY_LABEL: Record<Category, string> = {
 }
 export const STAGE_LABEL: Record<Stage, string> = {
   emerging: 'Emerging', early: 'Early adopters', rising: 'Rising', peak: 'Peak', fading: 'Fading',
+}
+export const ADOPTER_LABEL: Record<Adopter, string> = {
+  innovators: 'Innovators', 'early-adopters': 'Early adopters', 'early-majority': 'Early majority', 'late-majority': 'Late majority', laggards: 'Laggards',
+}
+export const ADOPTER_HINT: Record<Adopter, string> = {
+  innovators: 'Only the fashion-forward few: runway, stylists, insiders',
+  'early-adopters': 'Trend-led dressers pick it up; still feels new',
+  'early-majority': 'Going mainstream: arriving on the high street',
+  'late-majority': 'Everywhere; the cautious majority is buying in',
+  laggards: 'Past its moment; mostly holdouts still wearing it',
+}
+/** Plain label for how far ahead a source can see. */
+export function leadLabel([lo, hi]: [number, number]) {
+  const f = (m: number) => (m <= 0 ? 'now' : m % 12 === 0 ? `${m / 12} yr` : `${m} mo`)
+  return lo <= 0 ? `Sees now to ${f(hi)}` : `Sees ${f(lo)} to ${f(hi)} ahead`
 }
 export const STANCE_LABEL: Record<Stance, string> = { rising: 'Rising', peaking: 'Peaking', declining: 'Declining' }
 export const TIER_LABEL: Record<Tier, string> = {

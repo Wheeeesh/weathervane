@@ -1,15 +1,15 @@
 import { Loading } from '../components/Loading'
 import { useEdition } from '../lib/data'
-import { TIER_LABEL, pct } from '../lib/format'
+import { TIER_LABEL, leadLabel, pct } from '../lib/format'
 import { useViewParams } from '../lib/params'
-import { TIERS } from '../data/schema'
 
-const TIER_NOTE = {
-  data: 'Measured behaviour: searches, sales, runway counts. Weighted highest.',
-  forecaster: 'Professional forecasting built on proprietary data.',
-  retail: 'What buyers and retailers are actually stocking.',
-  editorial: 'Expert eyes on the runway. Good for timing, easily swayed by spectacle.',
-}
+/** The source ladder: which sources can see how far ahead, and why. */
+const BANDS: { title: string; lo: number; hi: number; why: string }[] = [
+  { title: 'Now to 3 months', lo: 0, hi: 3, why: 'What people are searching, buying and reselling right now.' },
+  { title: '3 to 12 months', lo: 3, hi: 12, why: 'Runway to store takes 6–9 months, and buyers are already placing orders.' },
+  { title: '1 to 2 years', lo: 12, hi: 24, why: 'The supply chain commits early: fabric and yarn fairs about 18 months ahead, colour forecasters about 2 years.' },
+  { title: '2 to 4 years', lo: 24, hi: 48, why: 'Only macro forces reach this far: climate, economics, consumer values. No one sees individual items this far out.' },
+]
 
 export default function Sources() {
   const { params } = useViewParams()
@@ -23,25 +23,38 @@ export default function Sources() {
     <div className="wrap pt-14">
       <div className="t-hero">Sources</div>
       <p className="t-sub mt-1.5 max-w-2xl">
-        Every source starts with a weight for its type. After five resolved calls, its weight moves with its track record, from 0.6× to 1.4×. Outlets owned by the same group count as one voice.
+        Every source must be grade A (measured data or a published method) or grade B (an established trade or editorial authority). Anything else is rejected automatically. Each source only counts fully for the time distance it can actually see.
       </p>
+      <div className="flex gap-5 mt-4 t-caption">
+        <span className="flex items-center gap-2"><span className="q q-A">A</span> Measured data or published method</span>
+        <span className="flex items-center gap-2"><span className="q q-B">B</span> Trade or editorial authority</span>
+      </div>
 
       <div className="space-y-10 mt-10">
-        {TIERS.map((tier) => {
-          const list = edition.sources.filter((s) => s.tier === tier).sort((a, b) => (cited.get(b.id) ?? 0) - (cited.get(a.id) ?? 0))
-          if (!list.length) return null
+        {BANDS.map((band) => {
+          const list = edition.sources
+            .filter((s) => s.lead[0] <= band.hi && s.lead[1] >= band.lo)
+            .sort((a, b) => a.quality.localeCompare(b.quality) || (cited.get(b.id) ?? 0) - (cited.get(a.id) ?? 0))
+          const aCount = list.filter((s) => s.quality === 'A').length
           return (
-            <section key={tier}>
-              <div className="t-section">{TIER_LABEL[tier]} — {TIER_NOTE[tier]}</div>
+            <section key={band.title}>
+              <div className="flex items-baseline justify-between gap-4 px-4 mb-2">
+                <div>
+                  <div className="t-headline">{band.title}</div>
+                  <div className="t-caption">{band.why}</div>
+                </div>
+                <div className="t-caption shrink-0 num">{aCount} A · {list.length - aCount} B</div>
+              </div>
               <div className="group">
                 {list.map((s) => (
                   <a key={s.id} href={s.url} target="_blank" rel="noreferrer" className="row" style={{ alignItems: 'flex-start' }}>
+                    <span className={`q q-${s.quality} mt-0.5`}>{s.quality}</span>
                     <div className="flex-1 min-w-0">
                       <div className="font-medium" style={{ fontSize: 15 }}>{s.name}</div>
                       <div className="t-caption">{s.measures}</div>
+                      <div className="t-footnote mt-0.5">{TIER_LABEL[s.tier]} · {leadLabel(s.lead)}</div>
                     </div>
                     <div className="text-right t-caption num shrink-0">
-                      <div style={{ color: 'var(--text)' }}>{s.weight.toFixed(2)}</div>
                       <div>{cited.get(s.id) ?? 0} cited</div>
                       <div>{s.hitRate === null ? 'No record yet' : `${pct(s.hitRate)} of ${s.resolved}`}</div>
                     </div>
@@ -54,7 +67,7 @@ export default function Sources() {
       </div>
 
       <p className="t-footnote mt-8 max-w-2xl">
-        Paywalled products (WGSN’s platform, EDITED, full Tagwalk reports) are used only through what they publish openly. Sites that block automated reading aren’t used. Every signal links to its source.
+        After five resolved calls, a source's weight moves with its track record (0.6× to 1.4×). Outlets from the same group count as one voice. Paywalled platforms (WGSN's core product, EDITED, full Tagwalk reports) are used only through what they publish openly.
       </p>
     </div>
   )
